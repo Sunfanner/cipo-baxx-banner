@@ -1,0 +1,880 @@
+<!doctype html>
+<html data-src-ver="ba7c10f4" lang="ru" data-om-id="ba7c10f4:0"><head data-om-id="ba7c10f4:1">
+<style data-omelette-injected="">html,body{background:transparent}</style><script data-omelette-injected="">(()=>{var j=["https://claude.ai","https://preview.claude.ai"];var x=true;var S=30000;var f=3000;document.addEventListener("DOMContentLoaded",()=>{const H=window.Babel;const G="om-src-id";if(H&&H.registerPlugin&&!(H.availablePlugins&&H.availablePlugins[G])){H.registerPlugin(G,({types:Y})=>({visitor:{JSXOpeningElement(U,Q){const J=U.node;if(J.name&&J.name.type==="JSXMemberExpression")return;for(let V=0;V<J.attributes.length;V++){const L=J.attributes[V];if(L.type==="JSXAttribute"&&L.name&&L.name.name==="data-om-id")return}const W=Q.file&&Q.file.opts&&Q.file.opts.filename||"?";const Z=J.loc&&J.loc.start;const z=`jsx:${W}:${J.start??0}:${Z?Z.line:0}:${Z?Z.column+1:0}`;J.attributes.push(Y.jsxAttribute(Y.jsxIdentifier("data-om-id"),Y.stringLiteral(z)))}}}))}const k="om-text-extract";let A=false;if(x&&H&&H.registerPlugin&&!(H.availablePlugins&&H.availablePlugins[k])){const Y=window.React;if(Y&&Y.useSyncExternalStore&&Y.createElement){A=true;const U={};const Q=new Set;let J=0;window.__omTextO=U;window.__omTextSet=(z)=>{for(const V in z){const L=z[V];if(L==null)delete U[V];else U[V]=L}J++;Q.forEach((V)=>V())};const W=(z)=>{Q.add(z);return()=>Q.delete(z)};const Z=()=>J;window.__OmT=function z(V){Y.useSyncExternalStore(W,Z,Z);return Y.createElement("span",{"data-om-text":V.i,className:"__om-t"},V.i in U?U[V.i]:V.children)};H.registerPlugin(k,({types:z})=>{const V={style:1,script:1,noscript:1,textarea:1,title:1,option:1,text:1,tspan:1,textPath:1};const L={placeholder:1,alt:1,title:1,label:1,"aria-label":1,"aria-description":1,"aria-placeholder":1};const _=($,C)=>z.logicalExpression("??",z.memberExpression(z.logicalExpression("||",z.memberExpression(z.identifier("window"),z.identifier("__omTextO")),z.objectExpression([])),z.stringLiteral($),true),C);const E=($)=>$.file&&$.file.opts&&$.file.opts.filename||"?";const B=($)=>$.file&&$.file.code||"";const b=($,C)=>{const X=(F)=>F&&F.start!=null&&F.end!=null&&(F.type==="StringLiteral"||F.type==="TemplateLiteral"&&F.expressions.length===0)?[F.start,F.end]:null;const N=X(C);if(N)return N;if(C&&C.type==="Identifier"){const F=$.scope.getBinding(C.name);if(F&&F.constant&&F.path.node.type==="VariableDeclarator"){return X(F.path.node.init)}}return null};const M=($,C,X)=>{const N=$.node;let F=false;const w=(K,q)=>{F=true;return z.jsxElement(z.jsxOpeningElement(z.jsxIdentifier("__OmT"),[z.jsxAttribute(z.jsxIdentifier("i"),z.stringLiteral(K))],false),z.jsxClosingElement(z.jsxIdentifier("__OmT")),[q],false)};const D=N.children.map((K)=>{if(K.type==="JSXText"){if(K.start==null||K.end==null)return K;const q=X.slice(K.start,K.end);const R=q.length-q.trimStart().length;const m=q.length-q.trimEnd().length;if(R+m>=q.length)return K;return w(`txt:${C}:${K.start+R}:${K.end-m}`,K)}if(K.type==="JSXExpressionContainer"){const q=b($,K.expression);if(q)return w(`str:${C}:${q[0]}:${q[1]}`,K)}return K});if(F)N.children=D};return{visitor:{JSXOpeningElement($,C){const X=$.node;const N=E(C);const F={};for(let w=0;w<X.attributes.length;w++){const D=X.attributes[w];if(D.type!=="JSXAttribute"||!D.name)continue;const K=D.name.name;if(!L[K])continue;if(!D.value||D.value.type!=="StringLiteral")continue;if(D.value.start==null||D.value.end==null)continue;const q=`txt:${N}:${D.value.start}:${D.value.end}`;F[K]=q;D.value=z.jsxExpressionContainer(_(q,z.stringLiteral(D.value.value)))}if(Object.keys(F).length){X.attributes.push(z.jsxAttribute(z.jsxIdentifier("data-om-text-attrs"),z.stringLiteral(JSON.stringify(F))))}},JSXElement($,C){const X=$.node.openingElement;const N=X&&X.name&&X.name.name;if(N==="__OmT")return;if(typeof N==="string"&&V[N])return;M($,E(C),B(C))},JSXFragment($,C){M($,E(C),B(C))}}}})}}const u=A?["transform-react-jsx-source",G,k]:["transform-react-jsx-source",G];document.querySelectorAll('script[type="text/babel"],script[type="text/jsx"]').forEach((Y,U)=>{const Q=Y.getAttribute("data-plugins")||"";const J=u.filter((W)=>Q.indexOf(W)<0);if(J.length){Y.setAttribute("data-plugins",Q?`${Q},${J.join(",")}`:J.join(","))}if(!Y.hasAttribute("data-filename")){Y.setAttribute("data-filename",Y.getAttribute("src")||`inline-${U}`)}})});var y=window.parent;if(y&&y!==window){const H=(Q,J)=>{try{y.postMessage({__omelette_log:true,type:Q,data:J},"*")}catch{}};["log","warn","error"].forEach((Q)=>{const J=console[Q];console[Q]=(...W)=>{const Z=W.map((z)=>{try{return typeof z==="object"?JSON.stringify(z):String(z)}catch{try{return String(z)}catch{return"[unstringifiable]"}}}).join(" ");H(Q,Z);J.apply(console,W)}});window.addEventListener("error",(Q)=>{const J=Q.target;if(J&&J!==window&&J.tagName){const W=J.src||J.href||"";H("resource_error",`${J.tagName} failed to load: ${W}`)}else{H("error",`${Q.message||"Unknown error"} at ${Q.filename||"?"}:${Q.lineno||0}:${Q.colno||0}`)}},true);window.addEventListener("unhandledrejection",(Q)=>{const J=Q.reason;const W=J instanceof Error?`${J.message} ${J.stack}`:String(J);H("error",`Unhandled rejection: ${W}`)});const G=()=>{try{y.postMessage({type:"omelette:height",height:document.documentElement.scrollHeight},"*")}catch{}};if(document.readyState==="complete")G();else window.addEventListener("load",G);if(window.ResizeObserver)new ResizeObserver(G).observe(document.documentElement);const k={};let A=0;window.claude={complete(Q){return new Promise((J,W)=>{if(!j.length){W(new Error("claude.complete: no parent origin"));return}const Z=`c${++A}`;const z=()=>setTimeout(()=>{delete k[Z];W(new Error(`claude.complete: no data for ${S/1000}s`))},S);const V=z();k[Z]={resolve:J,reject:W,text:"",t:V,arm:z};try{for(const L of j){y.postMessage({__om_api:true,id:Z,body:Q},L)}}catch(L){clearTimeout(V);delete k[Z];W(L)}})}};const u={};let Y=0;window.omelette={writeFile:(Q,J)=>new Promise((W,Z)=>{if(!j.length){W();return}const z=`f${++Y}`;const V=setTimeout(()=>{delete u[z];W()},f);u[z]={resolve:W,reject:Z,t:V};try{for(const L of j){y.postMessage({__om_file:true,id:z,op:"write",path:Q,content:J},L)}}catch{clearTimeout(V);delete u[z];W()}})};const U=(Q)=>{try{return JSON.stringify(Q)}catch{return JSON.stringify(String(Q))}};window.addEventListener("message",(Q)=>{if(j.indexOf(Q.origin)<0)return;if(Q.source!==y)return;const J=Q.data;if(!J)return;if(J.type==="omelette-preview-refresh"){if(typeof J.token!=="string"||!/^[0-9a-f.-]+(\.(rc|pr-[0-9]+))?(\.[0-9]+\.[0-9a-f]{16})?$/.test(J.token))return;const z=Math.max(1,Math.floor((J.expiresAt||0)-Date.now()/1000));document.cookie="__Host-omelette-preview="+J.token+"; Path=/; Secure; SameSite=None; Partitioned; Max-Age="+z;return}if(J.__om_file_r){const z=u[J.id];if(!z)return;clearTimeout(z.t);delete u[J.id];if(J.ok)z.resolve();else z.reject(new Error(J.error||"write failed"));return}if(J.__om_api_r){const z=k[J.id];if(!z)return;if(J.error!=null){clearTimeout(z.t);delete k[J.id];z.reject(new Error(J.error));return}if(J.chunk!=null){clearTimeout(z.t);z.t=z.arm();z.text+=J.chunk;return}if(J.done){clearTimeout(z.t);delete k[J.id];z.resolve(J.text!=null?J.text:z.text);return}return}if(!J.__om_eval)return;const W=J;const Z=(z)=>{Q.source.postMessage({...z,__om_eval_r:1,id:W.id},Q.origin)};try{const z=(0,eval)(W.code);if(z&&typeof z.then==="function"){z.then((V)=>Z({ok:1,v:U(V)}),(V)=>Z({ok:0,e:String(V)}))}else{Z({ok:1,v:U(z)})}}catch(z){Z({ok:0,e:String(z)})}})}})();
+</script>
+
+<meta charset="utf-8" data-om-id="ba7c10f4:2">
+<title>Геометрия посадки — Cipo &amp; Baxx · Interactive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" data-om-id="ba7c10f4:3">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" data-om-id="ba7c10f4:4">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet" data-om-id="ba7c10f4:5">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+  :root {
+    --bg: #0c0c0c;
+    --fg: #ffffff;
+    --red: #e8333a;
+    --muted: #6a6a6a;
+    --dim: #555555;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #ededeb;
+    color: #1a1a1a;
+    font-family: "Manrope", system-ui, sans-serif;
+    min-height: 100vh;
+    padding: 48px 32px 96px;
+    display: flex; flex-direction: column; align-items: center;
+    overflow-x: auto;
+  }
+  .preview-chrome {
+    width: 100%; max-width: 1000px;
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 22px;
+  }
+  .crumbs {
+    display: flex; align-items: center; gap: 14px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: #6a6a6a;
+  }
+  .crumbs .dot { width: 6px; height: 6px; background: #e8333a; border-radius: 50%; }
+  .crumbs b { color: #1a1a1a; font-weight: 700; }
+  .actions { display: flex; gap: 10px; }
+
+  /* Dots menu */
+  .menu-wrap { position: relative; }
+  .dot-btn {
+    appearance: none; border: 0; cursor: pointer;
+    width: 36px; height: 36px; border-radius: 50%;
+    background: #d4d4d2; color: #4a4a4a;
+    font-size: 20px; line-height: 1; font-weight: 700;
+    display: inline-flex; align-items: center; justify-content: center;
+    padding-bottom: 8px;
+    transition: background .15s ease, color .15s ease, transform .15s ease;
+  }
+  .dot-btn:hover { background: #1a1a1a; color: #fff; }
+  .dot-btn:active { transform: scale(0.96); }
+  .menu-wrap.open .dot-btn { background: #1a1a1a; color: #fff; }
+  .menu {
+    position: absolute; top: calc(100% + 8px); right: 0;
+    background: #1a1a1a; color: #fff;
+    border-radius: 6px; padding: 6px; min-width: 200px;
+    box-shadow: 0 14px 40px -10px rgba(0,0,0,0.45), 0 4px 12px -4px rgba(0,0,0,0.25);
+    opacity: 0; transform: translateY(-6px) scale(0.98);
+    pointer-events: none;
+    transition: opacity .14s ease, transform .14s ease;
+    z-index: 50;
+  }
+  .menu-wrap.open .menu { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+  .menu-item {
+    appearance: none; border: 0; background: transparent;
+    width: 100%; text-align: left; cursor: pointer; color: #fff;
+    font-family: "Manrope", sans-serif; font-weight: 500;
+    font-size: 13px; letter-spacing: 0.01em;
+    padding: 10px 12px; border-radius: 4px;
+    display: flex; align-items: center; gap: 12px;
+    transition: background .12s ease;
+  }
+  .menu-item:hover { background: rgba(255,255,255,0.08); }
+  .menu-item:active { background: rgba(255,255,255,0.12); }
+  .menu-item svg { width: 15px; height: 15px; color: #9a9a9a; flex-shrink: 0; }
+  .menu-item:hover svg { color: #e8333a; }
+
+  .stage {
+    width: 100%; max-width: 1000px;
+    background: #ffffff; border-radius: 6px; padding: 26px;
+    box-shadow:
+      0 1px 0 rgba(0,0,0,0.04),
+      0 30px 60px -20px rgba(0,0,0,0.18),
+      0 12px 20px -16px rgba(0,0,0,0.16);
+  }
+  .stage-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 16px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: #8a8a8a;
+  }
+  .stage-head b { color: #1a1a1a; font-weight: 700; letter-spacing: 0.18em; }
+  .stage-head .red { color: #e8333a; }
+  .banner-shell {
+    width: 1800px; height: 2400px;
+    position: relative; margin: 0 auto; overflow: hidden;
+    transform-origin: top center;
+  }
+  .banner-wrap { display: block; margin: 0 auto; }
+
+  /* ===== Banner ===== */
+  .banner {
+    width: 1800px; height: 2400px;
+    background: #0c0c0c; color: #fff;
+    position: relative;
+    font-family: "Manrope", sans-serif;
+    overflow: hidden;
+  }
+  .grid-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 48px 48px; background-position: -1px -1px;
+    pointer-events: none;
+  }
+  .left-bar { position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: #e8333a; z-index: 5; }
+  .bottom-bar { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: #e8333a; opacity: 0.5; z-index: 5; }
+
+  .logo { position: absolute; top: 50px; right: 70px; text-align: right; line-height: 1; z-index: 6; }
+  .logo .denims { font-style: italic; font-weight: 500; font-size: 22px; color: #6a6a6a; letter-spacing: 0.02em; margin-bottom: 8px; }
+  .logo .cipo { font-weight: 800; font-size: 46px; color: #fff; letter-spacing: 0.01em; margin-bottom: 4px; }
+  .logo .cipo .amp { color: #e8333a; }
+  .logo .baxx { font-weight: 900; font-size: 46px; color: #fff; letter-spacing: 0.01em; }
+  .logo .baxx sup { font-size: 20px; font-weight: 600; vertical-align: top; }
+
+  .top-label {
+    position: absolute; top: 62px; left: 70px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 17px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: #fff; display: flex; align-items: center; gap: 18px; z-index: 6;
+  }
+  .top-label::before { content: ""; display: inline-block; width: 44px; height: 2px; background: #e8333a; }
+  .top-label .spec { color: #6a6a6a; margin-left: 6px; }
+
+  .crop { position: absolute; width: 18px; height: 18px; border-color: rgba(255,255,255,0.18); border-style: solid; z-index: 6; }
+  .crop.tl { top: 24px; left: 24px; border-width: 1px 0 0 1px; }
+  .crop.tr { top: 24px; right: 24px; border-width: 1px 1px 0 0; }
+  .crop.bl { bottom: 24px; left: 24px; border-width: 0 0 1px 1px; }
+  .crop.br { bottom: 24px; right: 24px; border-width: 0 1px 1px 0; }
+
+  .main {
+    position: absolute;
+    left: 70px; right: 70px;
+    top: 200px; bottom: 200px;
+    display: grid;
+    grid-template-columns: 30fr 40fr 30fr;
+    gap: 44px;
+  }
+
+  /* ===== LEFT COLUMN ===== */
+  .col-left { display: flex; flex-direction: column; }
+  .left-header { flex-shrink: 0; margin-bottom: 30px; }
+  .title-block { margin-bottom: 30px; }
+  .title-block .t1 { display: block; font-weight: 900; font-size: 58px; line-height: 0.9; color: #fff; letter-spacing: -0.03em; }
+  .title-block .t2 { display: block; font-weight: 900; font-size: 58px; line-height: 0.9; color: #e8333a; letter-spacing: -0.03em; }
+  .title-divider { height: 2px; width: 90px; background: #e8333a; }
+
+  /* ===== AI RESULT BLOCK (left column, under title) ===== */
+  .ai-result {
+    display: none;
+    flex-shrink: 0;
+    margin-bottom: 34px;
+    padding-bottom: 22px;
+    border-bottom: 2px solid #e8333a;
+    animation: aiReveal .4s ease;
+  }
+  .ai-result.show { display: block; }
+  @keyframes aiReveal { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+  .ai-result .ar-tag {
+    font-family: "JetBrains Mono", monospace; font-size: 13px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: #e8333a; margin-bottom: 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .ai-result .ar-tag::before { content: ""; width: 7px; height: 7px; background: #e8333a; border-radius: 50%; }
+  .ai-result .ar-fit { font-weight: 800; font-size: 36px; line-height: 1.0; color: #fff; letter-spacing: -0.01em; margin-bottom: 10px; }
+  .ai-result .ar-whom { font-size: 19px; font-weight: 600; color: #555; margin-bottom: 14px; }
+  .ai-result .ar-note { font-size: 17px; font-weight: 500; line-height: 1.4; color: #444; }
+
+  .sliders { display: flex; flex-direction: column; gap: 60px; padding-top: 320px; }
+  .slider-block { display: flex; flex-direction: column; }
+  .sb-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 20px; }
+  .sb-num { font-family: "JetBrains Mono", monospace; color: #e8333a; font-size: 18px; font-weight: 700; letter-spacing: 0.1em; }
+  .sb-name { color: #fff; font-size: 22px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; }
+  .sb-conf {
+    margin-left: auto; font-family: "JetBrains Mono", monospace; font-size: 12px;
+    letter-spacing: 0.12em; text-transform: uppercase; color: #f5b73d;
+    display: none; align-items: center; gap: 6px;
+  }
+  .sb-conf.show { display: inline-flex; }
+
+  .slider-wrap { border-radius: 8px; padding: 4px; margin: -4px; transition: box-shadow .2s ease; }
+  .slider-wrap.low-conf { box-shadow: inset 0 0 0 2px #f5b73d; background: rgba(245,183,61,0.06); }
+
+  input[type="range"].fit {
+    -webkit-appearance: none; appearance: none;
+    width: 100%; height: 10px; border-radius: 6px;
+    background: #222; outline: none; cursor: pointer; margin: 0;
+  }
+  input[type="range"].fit::-webkit-slider-runnable-track { height: 10px; border-radius: 6px; background: transparent; }
+  input[type="range"].fit::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 30px; height: 30px; border-radius: 50%;
+    background: #fff; border: 3px solid #e8333a;
+    margin-top: -10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.5);
+    cursor: pointer;
+  }
+  input[type="range"].fit::-moz-range-track { height: 10px; border-radius: 6px; background: #222; }
+  input[type="range"].fit::-moz-range-progress { height: 10px; border-radius: 6px; background: #e8333a; }
+  input[type="range"].fit::-moz-range-thumb {
+    width: 30px; height: 30px; border-radius: 50%;
+    background: #fff; border: 3px solid #e8333a; cursor: pointer;
+  }
+  .sb-labels { display: flex; justify-content: space-between; margin-top: 16px; font-size: 15px; color: #555; font-weight: 500; }
+
+  /* ===== CENTER COLUMN ===== */
+  .col-center { display: flex; flex-direction: column; align-items: center; height: 100%; position: relative; }
+  .center-head {
+    position: absolute; top: 0; left: 0; right: 0;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: #6a6a6a; padding: 14px 0; text-align: center;
+    z-index: 4; pointer-events: none;
+  }
+  .center-head .red { color: #e8333a; }
+  .jeans-photo {
+    width: 100%; flex: 1;
+    border: 1px solid #1e1e1e;
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    background:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.015) 0 2px, transparent 2px 14px),
+      #0e0e0e;
+  }
+  /* Когда фото загружено — убираем паттерн, оставляем только тёмный фон */
+  .jeans-photo.has-img {
+    background: #0c0c0c;
+  }
+  .jeans-photo::before, .jeans-photo::after,
+  .jeans-photo > .pc-bl, .jeans-photo > .pc-br { content: ""; position: absolute; width: 16px; height: 16px; }
+  .jeans-photo::before { top: -1px; left: -1px; border-top: 2px solid #e8333a; border-left: 2px solid #e8333a; }
+  .jeans-photo::after { top: -1px; right: -1px; border-top: 2px solid #e8333a; border-right: 2px solid #e8333a; }
+  .jeans-photo .pc-bl { bottom: -1px; left: -1px; border-bottom: 2px solid #e8333a; border-left: 2px solid #e8333a; }
+  .jeans-photo .pc-br { bottom: -1px; right: -1px; border-bottom: 2px solid #e8333a; border-right: 2px solid #e8333a; }
+
+  .placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 40px; }
+  .placeholder svg { height: 86%; width: auto; max-width: 86%; display: block; }
+  .placeholder .ph-text { font-family: "JetBrains Mono", monospace; font-size: 20px; letter-spacing: 0.14em; color: #333; text-transform: uppercase; }
+  .jeans-photo img { position: absolute; display: none; max-width: none; }
+  .jeans-photo.has-img img { display: block; }
+  .jeans-photo.has-img .placeholder { display: none; }
+
+  /* ===== UPLOAD ROW (3 buttons) ===== */
+  .upload-row {
+    margin-top: 24px; width: 100%;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+    flex-shrink: 0;
+  }
+  .upload-btn {
+    appearance: none; cursor: pointer;
+    background: #1a1a1a; border: 1px solid #2a2a2a; color: #fff;
+    font-family: "Manrope", sans-serif; font-weight: 700; font-size: 16px;
+    letter-spacing: 0.01em;
+    padding: 16px 14px; border-radius: 6px;
+    display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+    text-align: center; line-height: 1.2;
+    transition: background .15s ease, border-color .15s ease;
+  }
+  .upload-btn:hover { background: #232323; border-color: #3a3a3a; }
+  .upload-btn .ic { color: #e8333a; flex-shrink: 0; }
+  .upload-btn.loaded { border-color: #e8333a; background: #1c1012; }
+  .upload-btn.loaded .ic { color: #34c759; }
+
+  .ai-block { margin-top: 18px; display: flex; flex-direction: column; align-items: center; gap: 12px; align-self: stretch; flex-shrink: 0; }
+  .ai-btn {
+    appearance: none; cursor: pointer;
+    background: #e8333a; border: 0; color: #fff;
+    font-family: "Manrope", sans-serif; font-weight: 800; font-size: 19px;
+    letter-spacing: 0.01em;
+    padding: 18px 28px; border-radius: 6px; width: 100%; max-width: 400px;
+    display: inline-flex; align-items: center; justify-content: center; gap: 14px;
+    transition: background .15s ease, transform .1s ease, opacity .15s ease;
+  }
+  .ai-btn:hover { background: #f0474d; }
+  .ai-btn:active { transform: scale(0.99); }
+  .ai-btn:disabled { background: #2a2a2a; color: #5a5a5a; cursor: not-allowed; }
+  .ai-btn.busy { background: #1c1012; color: #fff; border: 1px solid #e8333a; cursor: progress; }
+  .ai-btn.done { background: #143b1f; color: #fff; border: 1px solid #34c759; }
+  .ai-note { font-family: "JetBrains Mono", monospace; font-size: 15px; color: #555; letter-spacing: 0.06em; text-align: center; }
+  .ai-error { font-family: "JetBrains Mono", monospace; font-size: 15px; color: #e8333a; letter-spacing: 0.04em; text-align: center; line-height: 1.4; display: none; }
+  .ai-error.show { display: block; }
+
+  /* ===== UI OVERLAY (вне баннера) ===== */
+  .ui-overlay {
+    width: 100%; max-width: 1000px;
+    margin-top: 20px;
+    display: flex; flex-direction: column; align-items: center; gap: 14px;
+  }
+  .ui-overlay .upload-row {
+    margin-top: 0; width: 100%;
+  }
+  .ui-overlay .ai-block {
+    margin-top: 0; width: 100%;
+  }
+
+  /* ===== RIGHT COLUMN ===== */
+  .col-right { 
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 30fr;
+    width: 28%;
+    display: flex;
+    flex-direction: column;
+  }
+  .right-spacer { display: none; }
+  .descs { flex: 1; display: flex; flex-direction: column; justify-content: space-between; padding: 40px 0; }
+  .desc-block { display: flex; flex-direction: column; position: relative; }
+  .desc-arrow { position: absolute; bottom: 100%; margin-bottom: 14px; display: flex; align-items: center; gap: 12px; }
+  .desc-arrow svg { width: 70px; height: 14px; flex-shrink: 0; }
+  .desc-num { font-family: "JetBrains Mono", monospace; color: #e8333a; font-size: 18px; font-weight: 700; letter-spacing: 0.1em; }
+  .desc-field {
+    color: #fff; font-size: 28px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.04em; line-height: 1.1;
+    outline: none; border-radius: 4px;
+    padding: 6px 8px; margin: -6px -8px;
+    transition: background .12s ease, box-shadow .12s ease;
+    cursor: text;
+  }
+  .desc-field:hover { background: rgba(255,255,255,0.03); }
+  .desc-field:focus { background: rgba(232,51,58,0.08); box-shadow: inset 0 0 0 1px rgba(232,51,58,0.4); }
+
+  /* Bottom strip */
+  .bottom-strip {
+    position: absolute; left: 0; right: 0; bottom: 26px;
+    display: flex; align-items: center; justify-content: center; gap: 30px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 16px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: #6a6a6a; padding: 0 70px;
+  }
+  .bottom-strip .dot { width: 5px; height: 5px; background: #e8333a; border-radius: 50%; display: inline-block; }
+  .bottom-strip b { color: #fff; font-weight: 700; letter-spacing: 0.16em; }
+</style>
+<style data-designer-overlay="1"></style></head>
+<body data-om-id="ba7c10f4:6">
+
+  <div class="preview-chrome" data-om-id="ba7c10f4:7">
+    <div class="crumbs" data-om-id="ba7c10f4:8">
+      <span class="dot" data-om-id="ba7c10f4:9"></span>
+      <span data-om-id="ba7c10f4:10">CIPO &amp; BAXX · PRODUCT</span>
+      <span data-om-id="ba7c10f4:11">/</span>
+      <b data-om-id="ba7c10f4:12">FIT GEOMETRY — DENIM</b>
+      <span data-om-id="ba7c10f4:13">/</span>
+      <span data-om-id="ba7c10f4:14">1800 × 2400</span>
+    </div>
+    <div class="actions" data-om-id="ba7c10f4:15">
+      <div class="menu-wrap" id="menu-wrap" data-om-id="ba7c10f4:16">
+        <button class="dot-btn" id="btn-dots" aria-label="Действия" aria-haspopup="true" aria-expanded="false" data-om-id="ba7c10f4:17">⋯</button>
+        <div class="menu" id="menu" role="menu" data-om-id="ba7c10f4:18">
+          <button class="menu-item" role="menuitem" data-action="png" data-om-id="ba7c10f4:19">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-om-id="ba7c10f4:20"><path d="M12 3v12M6 11l6 6 6-6M5 21h14" data-om-id="ba7c10f4:21"></path></svg>
+            <span data-om-id="ba7c10f4:22">Скачать PNG</span>
+          </button>
+          <button class="menu-item" role="menuitem" data-action="html" data-om-id="ba7c10f4:23">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-om-id="ba7c10f4:24"><path d="M8 4l-4 8 4 8M16 4l4 8-4 8M14 4l-4 16" data-om-id="ba7c10f4:25"></path></svg>
+            <span data-om-id="ba7c10f4:26">Скачать HTML</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage" data-om-id="ba7c10f4:27">
+    <div class="stage-head" data-om-id="ba7c10f4:28">
+      <div data-om-id="ba7c10f4:29"><b data-om-id="ba7c10f4:30">BANNER · ГЕОМЕТРИЯ ПОСАДКИ</b> <span style="color:#bababa" data-om-id="ba7c10f4:31">·</span> Превью 1:1 · интерактив</div>
+      <div data-om-id="ba7c10f4:32"><span class="red" data-om-id="ba7c10f4:33">●</span> 1800×2400 · 3:4</div>
+    </div>
+    <div class="banner-wrap" data-om-id="ba7c10f4:34" style="height: 1057px;">
+    <div class="banner-shell" data-om-id="ba7c10f4:35" style="transform: scale(0.440583); transform-origin: center top;">
+
+      <!-- === BANNER === -->
+      <div class="banner" id="banner" data-screen-label="Banner" data-om-id="ba7c10f4:36">
+
+        <div class="grid-bg" data-om-id="ba7c10f4:37"></div>
+        <div class="left-bar" data-om-id="ba7c10f4:38"></div>
+        <div class="bottom-bar" data-om-id="ba7c10f4:39"></div>
+        <div class="crop tl" data-om-id="ba7c10f4:40"></div>
+        <div class="crop tr" data-om-id="ba7c10f4:41"></div>
+        <div class="crop bl" data-om-id="ba7c10f4:42"></div>
+        <div class="crop br" data-om-id="ba7c10f4:43"></div>
+
+        <div class="top-label" data-om-id="ba7c10f4:44">
+          <span data-om-id="ba7c10f4:45">FIT GEOMETRY</span>
+          <span class="spec" data-om-id="ba7c10f4:46">· DENIM CONFIGURATOR</span>
+        </div>
+
+        <div class="logo" data-om-id="ba7c10f4:47">
+          <div class="denims" data-om-id="ba7c10f4:48">denim's</div>
+          <div class="cipo" data-om-id="ba7c10f4:49">CIPO <span class="amp" data-om-id="ba7c10f4:50">&amp;</span></div>
+          <div class="baxx" data-om-id="ba7c10f4:51">BAXX<sup data-om-id="ba7c10f4:52">®</sup></div>
+        </div>
+
+        <div class="main" data-om-id="ba7c10f4:53">
+
+          <!-- LEFT -->
+          <div class="col-left" data-om-id="ba7c10f4:54">
+            <div class="left-header" data-om-id="ba7c10f4:55">
+              <div class="title-block" data-om-id="ba7c10f4:56">
+                <span class="t1" data-om-id="ba7c10f4:57">ГЕОМЕТРИЯ</span>
+                <span class="t2" data-om-id="ba7c10f4:58">ПОСАДКИ</span>
+              </div>
+              <div class="title-divider" data-om-id="ba7c10f4:59"></div>
+            </div>
+
+            <!-- AI RESULT (appears after analysis) -->
+            <div class="ai-result" id="ai-result" data-om-id="ba7c10f4:60">
+              <div class="ar-tag" data-om-id="ba7c10f4:61">Claude AI · посадка</div>
+              <div class="ar-fit" id="ar-fit" data-om-id="ba7c10f4:62"></div>
+              <div class="ar-whom" id="ar-whom" data-om-id="ba7c10f4:63"></div>
+              <div class="ar-note" id="ar-note" data-om-id="ba7c10f4:64"></div>
+            </div>
+
+            <div class="sliders" data-om-id="ba7c10f4:65">
+              <div class="slider-block" data-om-id="ba7c10f4:66">
+                <div class="sb-head" data-om-id="ba7c10f4:67"><span class="sb-num" data-om-id="ba7c10f4:68">01</span><span class="sb-name" data-om-id="ba7c10f4:69">Посадка</span><span class="sb-conf" id="conf-01" data-om-id="ba7c10f4:70">⚠ низкая точность</span></div>
+                <div class="slider-wrap" id="wrap-01" data-om-id="ba7c10f4:71">
+                  <input type="range" class="fit" id="sl-01" min="0" max="100" value="42" data-om-id="ba7c10f4:72" style="background: linear-gradient(to right, rgb(232, 51, 58) 0%, rgb(232, 51, 58) 42%, rgb(34, 34, 34) 42%, rgb(34, 34, 34) 100%);">
+                </div>
+                <div class="sb-labels" data-om-id="ba7c10f4:73"><span data-om-id="ba7c10f4:74">Ниже средней</span><span data-om-id="ba7c10f4:75">Выше средней</span></div>
+              </div>
+              <div class="slider-block" data-om-id="ba7c10f4:76">
+                <div class="sb-head" data-om-id="ba7c10f4:77"><span class="sb-num" data-om-id="ba7c10f4:78">02</span><span class="sb-name" data-om-id="ba7c10f4:79">Пространство в бедре</span><span class="sb-conf" id="conf-02" data-om-id="ba7c10f4:80">⚠ низкая точность</span></div>
+                <div class="slider-wrap" id="wrap-02" data-om-id="ba7c10f4:81">
+                  <input type="range" class="fit" id="sl-02" min="0" max="100" value="60" data-om-id="ba7c10f4:82" style="background: linear-gradient(to right, rgb(232, 51, 58) 0%, rgb(232, 51, 58) 60%, rgb(34, 34, 34) 60%, rgb(34, 34, 34) 100%);">
+                </div>
+                <div class="sb-labels" data-om-id="ba7c10f4:83"><span data-om-id="ba7c10f4:84">Компактное</span><span data-om-id="ba7c10f4:85">Просторное</span></div>
+              </div>
+              <div class="slider-block" data-om-id="ba7c10f4:86">
+                <div class="sb-head" data-om-id="ba7c10f4:87"><span class="sb-num" data-om-id="ba7c10f4:88">03</span><span class="sb-name" data-om-id="ba7c10f4:89">Заужение</span><span class="sb-conf" id="conf-03" data-om-id="ba7c10f4:90">⚠ низкая точность</span></div>
+                <div class="slider-wrap" id="wrap-03" data-om-id="ba7c10f4:91">
+                  <input type="range" class="fit" id="sl-03" min="0" max="100" value="70" data-om-id="ba7c10f4:92" style="background: linear-gradient(to right, rgb(232, 51, 58) 0%, rgb(232, 51, 58) 70%, rgb(34, 34, 34) 70%, rgb(34, 34, 34) 100%);">
+                </div>
+                <div class="sb-labels" data-om-id="ba7c10f4:93"><span data-om-id="ba7c10f4:94">Прямой</span><span data-om-id="ba7c10f4:95">Зауженный</span></div>
+              </div>
+              <div class="slider-block" data-om-id="ba7c10f4:96">
+                <div class="sb-head" data-om-id="ba7c10f4:97"><span class="sb-num" data-om-id="ba7c10f4:98">04</span><span class="sb-name" data-om-id="ba7c10f4:99">Свобода движения</span><span class="sb-conf" id="conf-04" data-om-id="ba7c10f4:100">⚠ низкая точность</span></div>
+                <div class="slider-wrap" id="wrap-04" data-om-id="ba7c10f4:101">
+                  <input type="range" class="fit" id="sl-04" min="0" max="100" value="55" data-om-id="ba7c10f4:102" style="background: linear-gradient(to right, rgb(232, 51, 58) 0%, rgb(232, 51, 58) 55%, rgb(34, 34, 34) 55%, rgb(34, 34, 34) 100%);">
+                </div>
+                <div class="sb-labels" data-om-id="ba7c10f4:103"><span data-om-id="ba7c10f4:104">Плотная</span><span data-om-id="ba7c10f4:105">Свободная</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CENTER -->
+          <div class="col-center" data-om-id="ba7c10f4:106">
+            <div class="center-head" data-om-id="ba7c10f4:107"><span class="red" data-om-id="ba7c10f4:108">●</span> MODEL PREVIEW · 600 × 1400</div>
+            <div class="jeans-photo" id="jeans-photo" data-om-id="ba7c10f4:109">
+              <span class="pc-bl" data-om-id="ba7c10f4:110"></span><span class="pc-br" data-om-id="ba7c10f4:111"></span>
+              <div class="placeholder" data-om-id="ba7c10f4:112">
+                <svg viewBox="0 0 200 460" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-om-id="ba7c10f4:113">
+                  <g fill="none" stroke="#e8333a" stroke-opacity="0.2" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" data-om-id="ba7c10f4:114">
+                    <path d="M 36 16 L 164 16 L 164 44 L 36 44 Z" data-om-id="ba7c10f4:115"></path>
+                    <line x1="36" y1="30" x2="164" y2="30" data-om-id="ba7c10f4:116"></line>
+                    <line x1="56" y1="16" x2="56" y2="44" data-om-id="ba7c10f4:117"></line>
+                    <line x1="100" y1="16" x2="100" y2="44" data-om-id="ba7c10f4:118"></line>
+                    <line x1="144" y1="16" x2="144" y2="44" data-om-id="ba7c10f4:119"></line>
+                    <path d="M 36 44 L 32 240 L 24 446 L 86 446 L 100 230 L 114 446 L 176 446 L 168 240 L 164 44" data-om-id="ba7c10f4:120"></path>
+                    <path d="M 100 44 L 100 230" data-om-id="ba7c10f4:121"></path>
+                    <path d="M 44 50 L 70 50 L 60 78 Z" data-om-id="ba7c10f4:122"></path>
+                    <path d="M 156 50 L 130 50 L 140 78 Z" data-om-id="ba7c10f4:123"></path>
+                    <path d="M 44 92 L 74 92 L 74 120 L 44 120 Z" data-om-id="ba7c10f4:124"></path>
+                    <path d="M 126 92 L 156 92 L 156 120 L 126 120 Z" data-om-id="ba7c10f4:125"></path>
+                    <line x1="32" y1="120" x2="30" y2="430" stroke-dasharray="3 6" data-om-id="ba7c10f4:126"></line>
+                    <line x1="168" y1="120" x2="170" y2="430" stroke-dasharray="3 6" data-om-id="ba7c10f4:127"></line>
+                  </g>
+                </svg>
+                <span class="ph-text" data-om-id="ba7c10f4:128">Загрузите фото модели</span>
+              </div>
+              <img id="jeans-img" alt="Фото модели в джинсах" data-om-id="ba7c10f4:129">
+            </div>
+          </div>
+
+          <!-- RIGHT -->
+          <div class="col-right" data-om-id="ba7c10f4:144">
+            <div class="right-spacer" data-om-id="ba7c10f4:145"></div>
+            <div class="descs" data-om-id="ba7c10f4:146">
+              <div class="desc-block" data-om-id="ba7c10f4:147">
+                <div class="desc-arrow" data-om-id="ba7c10f4:148">
+                  <svg viewBox="0 0 70 14" aria-hidden="true" data-om-id="ba7c10f4:149"><path d="M 68 7 L 6 7 M 6 7 L 14 2 M 6 7 L 14 12" fill="none" stroke="#e8333a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-om-id="ba7c10f4:150"></path></svg>
+                  <span class="desc-num" data-om-id="ba7c10f4:151">01</span>
+                </div>
+                <div class="desc-field" id="desc-01" contenteditable="true" spellcheck="false" data-om-id="ba7c10f4:152">ПОСАДКА ПО ФИГУРЕ</div>
+              </div>
+              <div class="desc-block" data-om-id="ba7c10f4:153">
+                <div class="desc-arrow" data-om-id="ba7c10f4:154">
+                  <svg viewBox="0 0 70 14" aria-hidden="true" data-om-id="ba7c10f4:155"><path d="M 68 7 L 6 7 M 6 7 L 14 2 M 6 7 L 14 12" fill="none" stroke="#e8333a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-om-id="ba7c10f4:156"></path></svg>
+                  <span class="desc-num" data-om-id="ba7c10f4:157">02</span>
+                </div>
+                <div class="desc-field" id="desc-02" contenteditable="true" spellcheck="false" data-om-id="ba7c10f4:158">ОБЪЁМ В БЕДРЕ</div>
+              </div>
+              <div class="desc-block" data-om-id="ba7c10f4:159">
+                <div class="desc-arrow" data-om-id="ba7c10f4:160">
+                  <svg viewBox="0 0 70 14" aria-hidden="true" data-om-id="ba7c10f4:161"><path d="M 68 7 L 6 7 M 6 7 L 14 2 M 6 7 L 14 12" fill="none" stroke="#e8333a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-om-id="ba7c10f4:162"></path></svg>
+                  <span class="desc-num" data-om-id="ba7c10f4:163">03</span>
+                </div>
+                <div class="desc-field" id="desc-03" contenteditable="true" spellcheck="false" data-om-id="ba7c10f4:164">ЛИНИЯ НОГИ</div>
+              </div>
+              <div class="desc-block" data-om-id="ba7c10f4:165">
+                <div class="desc-arrow" data-om-id="ba7c10f4:166">
+                  <svg viewBox="0 0 70 14" aria-hidden="true" data-om-id="ba7c10f4:167"><path d="M 68 7 L 6 7 M 6 7 L 14 2 M 6 7 L 14 12" fill="none" stroke="#e8333a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-om-id="ba7c10f4:168"></path></svg>
+                  <span class="desc-num" data-om-id="ba7c10f4:169">04</span>
+                </div>
+                <div class="desc-field" id="desc-04" contenteditable="true" spellcheck="false" data-om-id="ba7c10f4:170">СВОБОДА ДВИЖЕНИЯ</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="bottom-strip" data-om-id="ba7c10f4:171">
+          <span data-om-id="ba7c10f4:172"><b data-om-id="ba7c10f4:173">Авторская посадка</b></span>
+          <span class="dot" data-om-id="ba7c10f4:174"></span>
+          <span data-om-id="ba7c10f4:175">Европейское лекало</span>
+          <span class="dot" data-om-id="ba7c10f4:176"></span>
+          <span data-om-id="ba7c10f4:177">Стрейч-деним <b data-om-id="ba7c10f4:178">Cipo &amp; Baxx</b></span>
+        </div>
+
+      </div>
+      <!-- === / BANNER === -->
+
+    </div>
+    </div>
+  </div>
+
+  <!-- ===== UI OVERLAY — вне баннера, не влияет на layout ===== -->
+  <div class="ui-overlay" id="ui-overlay">
+    <input type="file" id="file-front" accept="image/*" style="display:none">
+    <input type="file" id="file-back"  accept="image/*" style="display:none">
+    <input type="file" id="file-table" accept="image/*" style="display:none">
+    <div class="upload-row">
+      <button class="upload-btn" id="up-front" data-key="front"><span class="ic" id="ic-front">📎</span> Фото спереди</button>
+      <button class="upload-btn" id="up-back"  data-key="back"><span class="ic" id="ic-back">📎</span> Фото сзади</button>
+      <button class="upload-btn" id="up-table" data-key="table"><span class="ic" id="ic-table">📎</span> Таблица размеров</button>
+    </div>
+    <div class="ai-block" id="ai-overlay-block">
+      <button class="ai-btn" id="ai-btn" disabled>🤖 Анализ через Claude AI</button>
+      <div class="ai-note" id="ai-note">Загрузите все три фото — ИИ выставит ползунки и описания</div>
+      <div class="ai-error" id="ai-error"></div>
+    </div>
+  </div>
+
+<script>
+    function scaleBanner() {
+    const shell = document.querySelector('.banner-shell');
+    const wrap = document.querySelector('.banner-wrap');
+    if (!shell || !wrap) return;
+    const availW = document.body.clientWidth - 64;
+    const availH = window.innerHeight - 200;
+    const scaleW = availW / 1800;
+    const scaleH = availH / 2400;
+    const scale = Math.min(scaleW, scaleH, 1);
+    shell.style.width = '1800px';
+    shell.style.height = '2400px';
+    shell.style.transform = 'scale(' + scale + ')';
+    shell.style.transformOrigin = 'top left';
+    wrap.style.width = Math.round(1800 * scale) + 'px';
+    wrap.style.height = Math.round(2400 * scale) + 'px';
+    wrap.style.overflow = 'hidden';
+    wrap.style.margin = '0 auto';
+  }
+  // Ручной object-fit:contain — html2canvas не понимает CSS object-fit.
+  // container.offsetWidth возвращает нативные px (1800px-пространство),
+  // т.к. shell масштабируется через CSS transform, а не через width/height.
+  function fitImgContain(img, container) {
+    // Нативные размеры контейнера (в 1800px-пространстве баннера)
+    const cw = container.offsetWidth;
+    const ch = container.offsetHeight;
+    const nw = img.naturalWidth  || cw;
+    const nh = img.naturalHeight || ch;
+    const scale = Math.min(cw / nw, ch / nh);
+    const w = Math.round(nw * scale);
+    const h = Math.round(nh * scale);
+    const x = Math.round((cw - w) / 2);
+    const y = Math.round((ch - h) / 2);
+    img.style.left   = x + 'px';
+    img.style.top    = y + 'px';
+    img.style.width  = w + 'px';
+    img.style.height = h + 'px';
+  }
+
+  // alias — fitBanner = scaleBanner + пересчёт фото
+  function fitBanner() {
+    scaleBanner();
+    // пересчитываем позицию фото если оно загружено
+    const img = document.getElementById('jeans-img');
+    const box = document.getElementById('jeans-photo');
+    if (img && box && img.naturalWidth) fitImgContain(img, box);
+  }
+  window.addEventListener('load', fitBanner);
+  window.addEventListener('resize', fitBanner);
+  document.fonts && document.fonts.ready.then(fitBanner);
+  fitBanner();
+
+  // ---- Slider fill (webkit needs JS gradient) ----
+  function paintSlider(el) {
+    const pct = (el.value - el.min) / (el.max - el.min) * 100;
+    el.style.background = `linear-gradient(to right, #e8333a 0%, #e8333a ${pct}%, #222 ${pct}%, #222 100%)`;
+  }
+  document.querySelectorAll('input[type="range"].fit').forEach(el => {
+    paintSlider(el);
+    el.addEventListener('input', () => paintSlider(el));
+  });
+
+  // ============================================================
+  //  CLAUDE API — фото загрузка + анализ посадки
+  // ============================================================
+
+  // Base64 (без префикса data:) для каждого из трёх файлов
+  const files = { front: null, back: null, table: null };
+  const mediaTypes = { front: 'image/jpeg', back: 'image/jpeg', table: 'image/jpeg' };
+
+  const aiBtn = document.getElementById('ai-btn');
+  const aiNote = document.getElementById('ai-note');
+  const aiError = document.getElementById('ai-error');
+  const jeansPhoto = document.getElementById('jeans-photo');
+  const jeansImg = document.getElementById('jeans-img');
+
+  // Привязка трёх кнопок к скрытым input[type=file]
+  [['front', 'file-front', 'up-front', 'ic-front'],
+   ['back',  'file-back',  'up-back',  'ic-back'],
+   ['table', 'file-table', 'up-table', 'ic-table']].forEach(([key, inputId, btnId, icId]) => {
+    const input = document.getElementById(inputId);
+    const btn = document.getElementById(btnId);
+    const ic = document.getElementById(icId);
+    btn.addEventListener('click', () => input.click());
+    input.addEventListener('change', (e) => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        const dataUrl = ev.target.result;           // data:image/...;base64,xxxx
+        files[key] = dataUrl.split(',')[1];           // только base64-часть
+        mediaTypes[key] = (file.type || 'image/jpeg');
+        // галочка на кнопке
+        btn.classList.add('loaded');
+        ic.textContent = '✓';
+        // фото спереди показываем в превью
+        if (key === 'front') {
+          jeansImg.onload = () => {
+            jeansPhoto.classList.add('has-img');
+            // requestAnimationFrame гарантирует что браузер успел пересчитать layout
+            requestAnimationFrame(() => fitImgContain(jeansImg, jeansPhoto));
+          };
+          jeansImg.src = dataUrl;
+        }
+        updateReady();
+      };
+      reader.readAsDataURL(file);
+    });
+  });
+
+  // Кнопка анализа активна только когда загружены все три
+  function allLoaded() { return files.front && files.back && files.table; }
+  function updateReady() {
+    if (aiBtn.classList.contains('busy')) return;
+    aiBtn.disabled = !allLoaded();
+    if (allLoaded() && !aiBtn.classList.contains('done')) {
+      aiNote.textContent = 'Готово к анализу — нажмите кнопку';
+    }
+  }
+
+  // Применение результата к ползункам и описаниям
+  const sliderMap = { sl01: 'sl-01', sl02: 'sl-02', sl03: 'sl-03', sl04: 'sl-04' };
+  const descMap   = { sl01: 'desc-01', sl02: 'desc-02', sl03: 'desc-03', sl04: 'desc-04' };
+  const wrapMap   = { sl01: 'wrap-01', sl02: 'wrap-02', sl03: 'wrap-03', sl04: 'wrap-04' };
+  const confMap   = { sl01: 'conf-01', sl02: 'conf-02', sl03: 'conf-03', sl04: 'conf-04' };
+
+  function applyResult(result) {
+    // Текстовый блок результата
+    document.getElementById('ar-fit').textContent  = result.fit_type || '';
+    document.getElementById('ar-whom').textContent = result.for_whom || '';
+    document.getElementById('ar-note').textContent = result.size_note || '';
+    document.getElementById('ai-result').classList.add('show');
+
+    // Ползунки + описания + confidence
+    Object.keys(sliderMap).forEach((k) => {
+      const p = result.params && result.params[k];
+      if (!p) return;
+      const slider = document.getElementById(sliderMap[k]);
+      const val = Math.max(0, Math.min(10, Number(p.value) || 0)) * 10; // 0–10 → 0–100
+      slider.value = val;
+      paintSlider(slider);
+      // описание справа
+      if (p.desc) document.getElementById(descMap[k]).textContent = p.desc;
+      // подсветка низкой уверенности
+      const lowConf = (p.confidence || '').toLowerCase() === 'low';
+      document.getElementById(wrapMap[k]).classList.toggle('low-conf', lowConf);
+      document.getElementById(confMap[k]).classList.toggle('show', lowConf);
+    });
+
+    fitBanner();
+  }
+
+  // Промпт для Claude
+  const PROMPT = `Ты эксперт по мужской одежде и посадке джинсов. Проанализируй три изображения: фото джинсов спереди, сзади и таблицу размеров.
+
+Верни ТОЛЬКО валидный JSON без markdown и без комментариев:
+{
+  "fit_type": "тип кроя 1-2 слова например Slim straight",
+  "for_whom": "для кого подходит 2-3 слова например Атлетический силуэт",
+  "size_note": "одна фраза про соответствие размеров",
+  "params": {
+    "sl01": { "value": 0-10, "desc": "3-4 СЛОВА ПРО ПОСАДКУ ПОЯСА ЗАГЛАВНЫМИ", "confidence": "high/medium/low" },
+    "sl02": { "value": 0-10, "desc": "3-4 СЛОВА ПРО ОБЪЁМ В БЕДРЕ ЗАГЛАВНЫМИ", "confidence": "high/medium/low" },
+    "sl03": { "value": 0-10, "desc": "3-4 СЛОВА ПРО ЗАУЖЕНИЕ НОГИ ЗАГЛАВНЫМИ", "confidence": "high/medium/low" },
+    "sl04": { "value": 0-10, "desc": "3-4 СЛОВА ПРО СВОБОДУ ДВИЖЕНИЯ ЗАГЛАВНЫМИ", "confidence": "high/medium/low" }
+  }
+}
+
+Шкала value: 0 = минимум (низкая посадка / компактное / прямое / плотное), 10 = максимум (высокая посадка / просторное / зауженное / свободное).
+confidence: high = уверен, medium = предположительно, low = сложно определить по фото.`;
+
+  function extractJson(text) {
+    // вырезаем возможные ```json ... ``` и берём первый {...}
+    let t = String(text).replace(/```json/gi, '').replace(/```/g, '').trim();
+    const s = t.indexOf('{'), e = t.lastIndexOf('}');
+    if (s !== -1 && e !== -1) t = t.slice(s, e + 1);
+    return JSON.parse(t);
+  }
+
+  async function runAnalysis() {
+    if (!allLoaded() || aiBtn.classList.contains('busy')) return;
+
+    // состояние «Анализирую»
+    aiError.classList.remove('show');
+    aiBtn.classList.remove('done');
+    aiBtn.classList.add('busy');
+    aiBtn.disabled = true;
+    aiBtn.textContent = '⏳ Анализирую…';
+    aiNote.textContent = 'Claude изучает посадку по трём фото…';
+
+    try {
+      // Вызов Claude через backend-прокси (ключ хранится на сервере).
+      const response = await fetch('https://cipo-baxx-proxy.as30828.workers.dev/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-5',
+          max_tokens: 1000,
+          messages: [{
+            role: 'user',
+            content: [
+              { type: 'image', source: { type: 'base64', media_type: mediaTypes.front, data: files.front } },
+              { type: 'image', source: { type: 'base64', media_type: mediaTypes.back,  data: files.back } },
+              { type: 'image', source: { type: 'base64', media_type: mediaTypes.table, data: files.table } },
+              { type: 'text', text: PROMPT }
+            ]
+          }]
+        })
+      });
+      const data = await response.json();
+      if (data.error) throw new Error('API: ' + data.error.message);
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      if (!data.content || !data.content[0] || !data.content[0].text) {
+        throw new Error('Пустой ответ: ' + JSON.stringify(data).slice(0, 200));
+      }
+      const reply = data.content[0].text;
+      const result = extractJson(reply);
+      applyResult(result);
+
+      // успех
+      aiBtn.classList.remove('busy');
+      aiBtn.classList.add('done');
+      aiBtn.disabled = false;
+      aiBtn.textContent = '✓ Анализ готов';
+      aiNote.textContent = 'Ползунки и описания обновлены — можно править вручную';
+    } catch (err) {
+      aiBtn.classList.remove('busy');
+      aiBtn.disabled = false;
+      aiBtn.textContent = '🤖 Повторить анализ';
+      aiNote.textContent = 'Загружены все три фото';
+      aiError.textContent = '✕ Ошибка анализа: ' + (err && err.message ? err.message : 'не удалось разобрать ответ');
+      aiError.classList.add('show');
+    }
+  }
+
+  aiBtn.addEventListener('click', runAnalysis);
+
+  // ---- Dots menu ----
+  const menuWrap = document.getElementById('menu-wrap');
+  const dotBtn = document.getElementById('btn-dots');
+  const menu = document.getElementById('menu');
+  function setMenuOpen(open) {
+    menuWrap.classList.toggle('open', open);
+    dotBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  dotBtn.addEventListener('click', (e) => { e.stopPropagation(); setMenuOpen(!menuWrap.classList.contains('open')); });
+  document.addEventListener('click', (e) => { if (!menuWrap.contains(e.target)) setMenuOpen(false); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenuOpen(false); });
+
+  async function downloadPng() {
+    const node = document.getElementById('banner');
+    const shell = document.querySelector('.banner-shell');
+    const wrap = document.querySelector('.banner-wrap');
+
+    // UI-элементы вынесены за пределы баннера — скрывать не нужно.
+    // Скрываем только center-head (он внутри баннера)
+    const centerHead = document.querySelector('.center-head');
+    if (centerHead) centerHead.style.visibility = 'hidden';
+
+    // Сбрасываем transform и фиксируем точный размер 1800×2400
+    const prevCssText = shell.style.cssText;
+    shell.style.cssText = 'width:1800px!important; height:2400px!important; transform:none!important';
+    wrap.style.width    = '1800px';
+    wrap.style.height   = '2400px';
+    wrap.style.overflow = 'visible';
+    document.body.style.overflow = 'visible';
+
+    await new Promise(r => setTimeout(r, 200));
+
+    // Пересчитываем фото под полный 1800px-размер контейнера
+    const _img = document.getElementById('jeans-img');
+    const _box = document.getElementById('jeans-photo');
+    if (_img && _box && _img.naturalWidth) fitImgContain(_img, _box);
+
+    try {
+      const canvas = await html2canvas(node, {
+        width: 1800, height: 2400,
+        windowWidth: 1800, windowHeight: 2400,
+        backgroundColor: '#0c0c0c',
+        scale: 1,
+        useCORS: true,
+        logging: false,
+        x: 0, y: 0
+      });
+      const a = document.createElement('a');
+      a.href = canvas.toDataURL('image/png');
+      a.download = 'banner.png';
+      a.click();
+    } catch (err) {
+      alert('Не удалось сгенерировать PNG: ' + err.message);
+    } finally {
+      if (centerHead) centerHead.style.visibility = '';
+      document.body.style.overflow = '';
+      shell.style.cssText = prevCssText;
+      fitBanner();
+    }
+  }
+  function downloadHtml() {
+    const src = '<!doctype html>\n' + document.documentElement.outerHTML;
+    const blob = new Blob([src], { type: 'text/html;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'banner.html'; a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+  menu.addEventListener('click', (e) => {
+    const item = e.target.closest('[data-action]');
+    if (!item) return;
+    setMenuOpen(false);
+    if (item.dataset.action === 'png') downloadPng();
+    else if (item.dataset.action === 'html') downloadHtml();
+  });
+</script>
+
+
+
+<script type="application/json" id="__om_srcmap">{"gen":"ba7c10f4","entries":[{"id":"ba7c10f4:0","tag":"html","openStart":16,"attrEnd":31,"openEnd":32,"closeStart":38767,"closeEnd":38774,"textRuns":[[32,33],[15815,15816],[38766,38767]],"parentId":null,"childIds":["ba7c10f4:1","ba7c10f4:6"]},{"id":"ba7c10f4:1","tag":"head","openStart":33,"attrEnd":38,"openEnd":39,"closeStart":15808,"closeEnd":15815,"textRuns":[[39,40],[62,63],[146,147],[206,207],[278,279],[447,448],[547,548],[15807,15808]],"parentId":"ba7c10f4:0","childIds":["ba7c10f4:2","ba7c10f4:3","ba7c10f4:4","ba7c10f4:5"]},{"id":"ba7c10f4:2","tag":"meta","openStart":40,"attrEnd":61,"openEnd":62,"closeEnd":62,"textRuns":[],"parentId":"ba7c10f4:1","childIds":[]},{"id":"ba7c10f4:3","tag":"link","openStart":147,"attrEnd":205,"openEnd":206,"closeEnd":206,"textRuns":[],"parentId":"ba7c10f4:1","childIds":[]},{"id":"ba7c10f4:4","tag":"link","openStart":207,"attrEnd":277,"openEnd":278,"closeEnd":278,"textRuns":[],"parentId":"ba7c10f4:1","childIds":[]},{"id":"ba7c10f4:5","tag":"link","openStart":279,"attrEnd":446,"openEnd":447,"closeEnd":447,"textRuns":[],"parentId":"ba7c10f4:1","childIds":[]},{"id":"ba7c10f4:6","tag":"body","openStart":15816,"attrEnd":15821,"openEnd":15822,"closeStart":38759,"closeEnd":38766,"textRuns":[[15822,15826],[17036,17040],[26805,26807],[38757,38759]],"parentId":"ba7c10f4:0","childIds":["ba7c10f4:7","ba7c10f4:27"]},{"id":"ba7c10f4:7","tag":"div","openStart":15826,"attrEnd":15853,"openEnd":15854,"closeStart":17030,"closeEnd":17036,"textRuns":[[15854,15859],[16078,16083],[17027,17030]],"parentId":"ba7c10f4:6","childIds":["ba7c10f4:8","ba7c10f4:15"]},{"id":"ba7c10f4:8","tag":"div","openStart":15859,"attrEnd":15878,"openEnd":15879,"closeStart":16072,"closeEnd":16078,"textRuns":[[15879,15886],[15911,15918],[15957,15964],[15978,15985],[16014,16021],[16035,16042],[16067,16072]],"parentId":"ba7c10f4:7","childIds":["ba7c10f4:9","ba7c10f4:10","ba7c10f4:11","ba7c10f4:12","ba7c10f4:13","ba7c10f4:14"]},{"id":"ba7c10f4:9","tag":"span","openStart":15886,"attrEnd":15903,"openEnd":15904,"closeStart":15904,"closeEnd":15911,"textRuns":[],"parentId":"ba7c10f4:8","childIds":[]},{"id":"ba7c10f4:10","tag":"span","openStart":15918,"attrEnd":15923,"openEnd":15924,"closeStart":15950,"closeEnd":15957,"textRuns":[[15924,15950]],"parentId":"ba7c10f4:8","childIds":[]},{"id":"ba7c10f4:11","tag":"span","openStart":15964,"attrEnd":15969,"openEnd":15970,"closeStart":15971,"closeEnd":15978,"textRuns":[[15970,15971]],"parentId":"ba7c10f4:8","childIds":[]},{"id":"ba7c10f4:12","tag":"b","openStart":15985,"attrEnd":15987,"openEnd":15988,"closeStart":16010,"closeEnd":16014,"textRuns":[[15988,16010]],"parentId":"ba7c10f4:8","childIds":[]},{"id":"ba7c10f4:13","tag":"span","openStart":16021,"attrEnd":16026,"openEnd":16027,"closeStart":16028,"closeEnd":16035,"textRuns":[[16027,16028]],"parentId":"ba7c10f4:8","childIds":[]},{"id":"ba7c10f4:14","tag":"span","openStart":16042,"attrEnd":16047,"openEnd":16048,"closeStart":16060,"closeEnd":16067,"textRuns":[[16048,16060]],"parentId":"ba7c10f4:8","childIds":[]},{"id":"ba7c10f4:15","tag":"div","openStart":16083,"attrEnd":16103,"openEnd":16104,"closeStart":17021,"closeEnd":17027,"textRuns":[[16104,16111],[17016,17021]],"parentId":"ba7c10f4:7","childIds":["ba7c10f4:16"]},{"id":"ba7c10f4:16","tag":"div","openStart":16111,"attrEnd":16148,"openEnd":16149,"closeStart":17010,"closeEnd":17016,"textRuns":[[16149,16158],[16281,16290],[17003,17010]],"parentId":"ba7c10f4:15","childIds":["ba7c10f4:17","ba7c10f4:18"]},{"id":"ba7c10f4:17","tag":"button","openStart":16158,"attrEnd":16268,"openEnd":16269,"closeStart":16272,"closeEnd":16281,"textRuns":[[16269,16272]],"parentId":"ba7c10f4:16","childIds":[]},{"id":"ba7c10f4:18","tag":"div","openStart":16290,"attrEnd":16329,"openEnd":16330,"closeStart":16997,"closeEnd":17003,"textRuns":[[16330,16341],[16654,16665],[16988,16997]],"parentId":"ba7c10f4:16","childIds":["ba7c10f4:19","ba7c10f4:23"]},{"id":"ba7c10f4:19","tag":"button","openStart":16341,"attrEnd":16400,"openEnd":16401,"closeStart":16645,"closeEnd":16654,"textRuns":[[16401,16414],[16590,16603],[16634,16645]],"parentId":"ba7c10f4:18","childIds":["ba7c10f4:20","ba7c10f4:22"]},{"id":"ba7c10f4:20","tag":"svg","openStart":16414,"attrEnd":16536,"openEnd":16537,"closeStart":16584,"closeEnd":16590,"textRuns":[],"parentId":"ba7c10f4:19","childIds":["ba7c10f4:21"]},{"id":"ba7c10f4:21","tag":"path","openStart":16537,"attrEnd":16576,"openEnd":16577,"closeStart":16577,"closeEnd":16584,"textRuns":[],"parentId":"ba7c10f4:20","childIds":[]},{"id":"ba7c10f4:22","tag":"span","openStart":16603,"attrEnd":16608,"openEnd":16609,"closeStart":16627,"closeEnd":16634,"textRuns":[[16609,16627]],"parentId":"ba7c10f4:19","childIds":[]},{"id":"ba7c10f4:23","tag":"button","openStart":16665,"attrEnd":16725,"openEnd":16726,"closeStart":16979,"closeEnd":16988,"textRuns":[[16726,16739],[16923,16936],[16968,16979]],"parentId":"ba7c10f4:18","childIds":["ba7c10f4:24","ba7c10f4:26"]},{"id":"ba7c10f4:24","tag":"svg","openStart":16739,"attrEnd":16861,"openEnd":16862,"closeStart":16917,"closeEnd":16923,"textRuns":[],"parentId":"ba7c10f4:23","childIds":["ba7c10f4:25"]},{"id":"ba7c10f4:25","tag":"path","openStart":16862,"attrEnd":16909,"openEnd":16910,"closeStart":16910,"closeEnd":16917,"textRuns":[],"parentId":"ba7c10f4:24","childIds":[]},{"id":"ba7c10f4:26","tag":"span","openStart":16936,"attrEnd":16941,"openEnd":16942,"closeStart":16961,"closeEnd":16968,"textRuns":[[16942,16961]],"parentId":"ba7c10f4:23","childIds":[]},{"id":"ba7c10f4:27","tag":"div","openStart":17040,"attrEnd":17058,"openEnd":17059,"closeStart":26799,"closeEnd":26805,"textRuns":[[17059,17064],[17310,17315],[26796,26799]],"parentId":"ba7c10f4:6","childIds":["ba7c10f4:28","ba7c10f4:34"]},{"id":"ba7c10f4:28","tag":"div","openStart":17064,"attrEnd":17087,"openEnd":17088,"closeStart":17304,"closeEnd":17310,"textRuns":[[17088,17095],[17235,17242],[17299,17304]],"parentId":"ba7c10f4:27","childIds":["ba7c10f4:29","ba7c10f4:32"]},{"id":"ba7c10f4:29","tag":"div","openStart":17095,"attrEnd":17099,"openEnd":17100,"closeStart":17229,"closeEnd":17235,"textRuns":[[17150,17151],[17188,17229]],"parentId":"ba7c10f4:28","childIds":["ba7c10f4:30","ba7c10f4:31"]},{"id":"ba7c10f4:30","tag":"b","openStart":17100,"attrEnd":17102,"openEnd":17103,"closeStart":17146,"closeEnd":17150,"textRuns":[[17103,17146]],"parentId":"ba7c10f4:29","childIds":[]},{"id":"ba7c10f4:31","tag":"span","openStart":17151,"attrEnd":17178,"openEnd":17179,"closeStart":17181,"closeEnd":17188,"styleAttr":[17164,17177],"textRuns":[[17179,17181]],"parentId":"ba7c10f4:29","childIds":[]},{"id":"ba7c10f4:32","tag":"div","openStart":17242,"attrEnd":17246,"openEnd":17247,"closeStart":17293,"closeEnd":17299,"textRuns":[[17275,17293]],"parentId":"ba7c10f4:28","childIds":["ba7c10f4:33"]},{"id":"ba7c10f4:33","tag":"span","openStart":17247,"attrEnd":17264,"openEnd":17265,"closeStart":17268,"closeEnd":17275,"textRuns":[[17265,17268]],"parentId":"ba7c10f4:32","childIds":[]},{"id":"ba7c10f4:34","tag":"div","openStart":17315,"attrEnd":17339,"openEnd":17340,"closeStart":26790,"closeEnd":26796,"textRuns":[[17340,17345],[26785,26790]],"parentId":"ba7c10f4:27","childIds":["ba7c10f4:35"]},{"id":"ba7c10f4:35","tag":"div","openStart":17345,"attrEnd":17370,"openEnd":17371,"closeStart":26779,"closeEnd":26785,"textRuns":[[17371,17379],[17402,17409],[26741,26748],[26773,26779]],"parentId":"ba7c10f4:34","childIds":["ba7c10f4:36"]},{"id":"ba7c10f4:36","tag":"div","openStart":17409,"attrEnd":17467,"openEnd":17468,"closeStart":26735,"closeEnd":26741,"textRuns":[[17468,17478],[17505,17514],[17542,17551],[17581,17590],[17617,17626],[17653,17662],[17689,17698],[17725,17735],[17867,17877],[18076,18086],[26411,26421],[26727,26735]],"parentId":"ba7c10f4:35","childIds":["ba7c10f4:37","ba7c10f4:38","ba7c10f4:39","ba7c10f4:40","ba7c10f4:41","ba7c10f4:42","ba7c10f4:43","ba7c10f4:44","ba7c10f4:47","ba7c10f4:53","ba7c10f4:171"]},{"id":"ba7c10f4:37","tag":"div","openStart":17478,"attrEnd":17498,"openEnd":17499,"closeStart":17499,"closeEnd":17505,"textRuns":[],"parentId":"ba7c10f4:36","childIds":[]},{"id":"ba7c10f4:38","tag":"div","openStart":17514,"attrEnd":17535,"openEnd":17536,"closeStart":17536,"closeEnd":17542,"textRuns":[],"parentId":"ba7c10f4:36","childIds":[]},{"id":"ba7c10f4:39","tag":"div","openStart":17551,"attrEnd":17574,"openEnd":17575,"closeStart":17575,"closeEnd":17581,"textRuns":[],"parentId":"ba7c10f4:36","childIds":[]},{"id":"ba7c10f4:40","tag":"div","openStart":17590,"attrEnd":17610,"openEnd":17611,"closeStart":17611,"closeEnd":17617,"textRuns":[],"parentId":"ba7c10f4:36","childIds":[]},{"id":"ba7c10f4:41","tag":"div","openStart":17626,"attrEnd":17646,"openEnd":17647,"closeStart":17647,"closeEnd":17653,"textRuns":[],"parentId":"ba7c10f4:36","childIds":[]},{"id":"ba7c10f4:42","tag":"div","openStart":17662,"attrEnd":17682,"openEnd":17683,"closeStart":17683,"closeEnd":17689,"textRuns":[],"parentId":"ba7c10f4:36","childIds":[]},{"id":"ba7c10f4:43","tag":"div","openStart":17698,"attrEnd":17718,"openEnd":17719,"closeStart":17719,"closeEnd":17725,"textRuns":[],"parentId":"ba7c10f4:36","childIds":[]},{"id":"ba7c10f4:44","tag":"div","openStart":17735,"attrEnd":17757,"openEnd":17758,"closeStart":17861,"closeEnd":17867,"textRuns":[[17758,17769],[17794,17805],[17852,17861]],"parentId":"ba7c10f4:36","childIds":["ba7c10f4:45","ba7c10f4:46"]},{"id":"ba7c10f4:45","tag":"span","openStart":17769,"attrEnd":17774,"openEnd":17775,"closeStart":17787,"closeEnd":17794,"textRuns":[[17775,17787]],"parentId":"ba7c10f4:44","childIds":[]},{"id":"ba7c10f4:46","tag":"span","openStart":17805,"attrEnd":17823,"openEnd":17824,"closeStart":17845,"closeEnd":17852,"textRuns":[[17824,17845]],"parentId":"ba7c10f4:44","childIds":[]},{"id":"ba7c10f4:47","tag":"div","openStart":17877,"attrEnd":17894,"openEnd":17895,"closeStart":18070,"closeEnd":18076,"textRuns":[[17895,17906],[17939,17950],[18009,18020],[18061,18070]],"parentId":"ba7c10f4:36","childIds":["ba7c10f4:48","ba7c10f4:49","ba7c10f4:51"]},{"id":"ba7c10f4:48","tag":"div","openStart":17906,"attrEnd":17925,"openEnd":17926,"closeStart":17933,"closeEnd":17939,"textRuns":[[17926,17933]],"parentId":"ba7c10f4:47","childIds":[]},{"id":"ba7c10f4:49","tag":"div","openStart":17950,"attrEnd":17967,"openEnd":17968,"closeStart":18003,"closeEnd":18009,"textRuns":[[17968,17973]],"parentId":"ba7c10f4:47","childIds":["ba7c10f4:50"]},{"id":"ba7c10f4:50","tag":"span","openStart":17973,"attrEnd":17990,"openEnd":17991,"closeStart":17996,"closeEnd":18003,"textRuns":[[17991,17996]],"parentId":"ba7c10f4:49","childIds":[]},{"id":"ba7c10f4:51","tag":"div","openStart":18020,"attrEnd":18037,"openEnd":18038,"closeStart":18055,"closeEnd":18061,"textRuns":[[18038,18042]],"parentId":"ba7c10f4:47","childIds":["ba7c10f4:52"]},{"id":"ba7c10f4:52","tag":"sup","openStart":18042,"attrEnd":18046,"openEnd":18047,"closeStart":18049,"closeEnd":18055,"textRuns":[[18047,18049]],"parentId":"ba7c10f4:51","childIds":[]},{"id":"ba7c10f4:53","tag":"div","openStart":18086,"attrEnd":18103,"openEnd":18104,"closeStart":26405,"closeEnd":26411,"textRuns":[[18104,18116],[18129,18140],[21042,21054],[21069,21080],[24132,24144],[24158,24169],[26395,26405]],"parentId":"ba7c10f4:36","childIds":["ba7c10f4:54","ba7c10f4:106","ba7c10f4:144"]},{"id":"ba7c10f4:54","tag":"div","openStart":18140,"attrEnd":18161,"openEnd":18162,"closeStart":21036,"closeEnd":21042,"textRuns":[[18162,18175],[18442,18456],[18499,18512],[18800,18814],[21025,21036]],"parentId":"ba7c10f4:53","childIds":["ba7c10f4:55","ba7c10f4:60","ba7c10f4:65"]},{"id":"ba7c10f4:55","tag":"div","openStart":18175,"attrEnd":18199,"openEnd":18200,"closeStart":18436,"closeEnd":18442,"textRuns":[[18200,18215],[18375,18390],[18423,18436]],"parentId":"ba7c10f4:54","childIds":["ba7c10f4:56","ba7c10f4:59"]},{"id":"ba7c10f4:56","tag":"div","openStart":18215,"attrEnd":18239,"openEnd":18240,"closeStart":18369,"closeEnd":18375,"textRuns":[[18240,18257],[18299,18316],[18354,18369]],"parentId":"ba7c10f4:55","childIds":["ba7c10f4:57","ba7c10f4:58"]},{"id":"ba7c10f4:57","tag":"span","openStart":18257,"attrEnd":18273,"openEnd":18274,"closeStart":18292,"closeEnd":18299,"textRuns":[[18274,18292]],"parentId":"ba7c10f4:56","childIds":[]},{"id":"ba7c10f4:58","tag":"span","openStart":18316,"attrEnd":18332,"openEnd":18333,"closeStart":18347,"closeEnd":18354,"textRuns":[[18333,18347]],"parentId":"ba7c10f4:56","childIds":[]},{"id":"ba7c10f4:59","tag":"div","openStart":18390,"attrEnd":18416,"openEnd":18417,"closeStart":18417,"closeEnd":18423,"textRuns":[],"parentId":"ba7c10f4:55","childIds":[]},{"id":"ba7c10f4:60","tag":"div","openStart":18512,"attrEnd":18549,"openEnd":18550,"closeStart":18794,"closeEnd":18800,"textRuns":[[18550,18565],[18618,18633],[18671,18686],[18726,18741],[18781,18794]],"parentId":"ba7c10f4:54","childIds":["ba7c10f4:61","ba7c10f4:62","ba7c10f4:63","ba7c10f4:64"]},{"id":"ba7c10f4:61","tag":"div","openStart":18565,"attrEnd":18584,"openEnd":18585,"closeStart":18612,"closeEnd":18618,"textRuns":[[18585,18612]],"parentId":"ba7c10f4:60","childIds":[]},{"id":"ba7c10f4:62","tag":"div","openStart":18633,"attrEnd":18664,"openEnd":18665,"closeStart":18665,"closeEnd":18671,"textRuns":[],"parentId":"ba7c10f4:60","childIds":[]},{"id":"ba7c10f4:63","tag":"div","openStart":18686,"attrEnd":18719,"openEnd":18720,"closeStart":18720,"closeEnd":18726,"textRuns":[],"parentId":"ba7c10f4:60","childIds":[]},{"id":"ba7c10f4:64","tag":"div","openStart":18741,"attrEnd":18774,"openEnd":18775,"closeStart":18775,"closeEnd":18781,"textRuns":[],"parentId":"ba7c10f4:60","childIds":[]},{"id":"ba7c10f4:65","tag":"div","openStart":18814,"attrEnd":18834,"openEnd":18835,"closeStart":21019,"closeEnd":21025,"textRuns":[[18835,18850],[19376,19391],[19935,19950],[20462,20477],[21006,21019]],"parentId":"ba7c10f4:54","childIds":["ba7c10f4:66","ba7c10f4:76","ba7c10f4:86","ba7c10f4:96"]},{"id":"ba7c10f4:66","tag":"div","openStart":18850,"attrEnd":18875,"openEnd":18876,"closeStart":19370,"closeEnd":19376,"textRuns":[[18876,18893],[19068,19085],[19237,19254],[19355,19370]],"parentId":"ba7c10f4:65","childIds":["ba7c10f4:67","ba7c10f4:71","ba7c10f4:73"]},{"id":"ba7c10f4:67","tag":"div","openStart":18893,"attrEnd":18913,"openEnd":18914,"closeStart":19062,"closeEnd":19068,"textRuns":[],"parentId":"ba7c10f4:66","childIds":["ba7c10f4:68","ba7c10f4:69","ba7c10f4:70"]},{"id":"ba7c10f4:68","tag":"span","openStart":18914,"attrEnd":18934,"openEnd":18935,"closeStart":18937,"closeEnd":18944,"textRuns":[[18935,18937]],"parentId":"ba7c10f4:67","childIds":[]},{"id":"ba7c10f4:69","tag":"span","openStart":18944,"attrEnd":18965,"openEnd":18966,"closeStart":18980,"closeEnd":18987,"textRuns":[[18966,18980]],"parentId":"ba7c10f4:67","childIds":[]},{"id":"ba7c10f4:70","tag":"span","openStart":18987,"attrEnd":19021,"openEnd":19022,"closeStart":19055,"closeEnd":19062,"textRuns":[[19022,19055]],"parentId":"ba7c10f4:67","childIds":[]},{"id":"ba7c10f4:71","tag":"div","openStart":19085,"attrEnd":19122,"openEnd":19123,"closeStart":19231,"closeEnd":19237,"textRuns":[[19123,19142],[19214,19231]],"parentId":"ba7c10f4:66","childIds":["ba7c10f4:72"]},{"id":"ba7c10f4:72","tag":"input","openStart":19142,"attrEnd":19213,"openEnd":19214,"closeEnd":19214,"textRuns":[],"parentId":"ba7c10f4:71","childIds":[]},{"id":"ba7c10f4:73","tag":"div","openStart":19254,"attrEnd":19276,"openEnd":19277,"closeStart":19349,"closeEnd":19355,"textRuns":[],"parentId":"ba7c10f4:66","childIds":["ba7c10f4:74","ba7c10f4:75"]},{"id":"ba7c10f4:74","tag":"span","openStart":19277,"attrEnd":19282,"openEnd":19283,"closeStart":19306,"closeEnd":19313,"textRuns":[[19283,19306]],"parentId":"ba7c10f4:73","childIds":[]},{"id":"ba7c10f4:75","tag":"span","openStart":19313,"attrEnd":19318,"openEnd":19319,"closeStart":19342,"closeEnd":19349,"textRuns":[[19319,19342]],"parentId":"ba7c10f4:73","childIds":[]},{"id":"ba7c10f4:76","tag":"div","openStart":19391,"attrEnd":19416,"openEnd":19417,"closeStart":19929,"closeEnd":19935,"textRuns":[[19417,19434],[19633,19650],[19802,19819],[19914,19929]],"parentId":"ba7c10f4:65","childIds":["ba7c10f4:77","ba7c10f4:81","ba7c10f4:83"]},{"id":"ba7c10f4:77","tag":"div","openStart":19434,"attrEnd":19454,"openEnd":19455,"closeStart":19627,"closeEnd":19633,"textRuns":[],"parentId":"ba7c10f4:76","childIds":["ba7c10f4:78","ba7c10f4:79","ba7c10f4:80"]},{"id":"ba7c10f4:78","tag":"span","openStart":19455,"attrEnd":19475,"openEnd":19476,"closeStart":19478,"closeEnd":19485,"textRuns":[[19476,19478]],"parentId":"ba7c10f4:77","childIds":[]},{"id":"ba7c10f4:79","tag":"span","openStart":19485,"attrEnd":19506,"openEnd":19507,"closeStart":19545,"closeEnd":19552,"textRuns":[[19507,19545]],"parentId":"ba7c10f4:77","childIds":[]},{"id":"ba7c10f4:80","tag":"span","openStart":19552,"attrEnd":19586,"openEnd":19587,"closeStart":19620,"closeEnd":19627,"textRuns":[[19587,19620]],"parentId":"ba7c10f4:77","childIds":[]},{"id":"ba7c10f4:81","tag":"div","openStart":19650,"attrEnd":19687,"openEnd":19688,"closeStart":19796,"closeEnd":19802,"textRuns":[[19688,19707],[19779,19796]],"parentId":"ba7c10f4:76","childIds":["ba7c10f4:82"]},{"id":"ba7c10f4:82","tag":"input","openStart":19707,"attrEnd":19778,"openEnd":19779,"closeEnd":19779,"textRuns":[],"parentId":"ba7c10f4:81","childIds":[]},{"id":"ba7c10f4:83","tag":"div","openStart":19819,"attrEnd":19841,"openEnd":19842,"closeStart":19908,"closeEnd":19914,"textRuns":[],"parentId":"ba7c10f4:76","childIds":["ba7c10f4:84","ba7c10f4:85"]},{"id":"ba7c10f4:84","tag":"span","openStart":19842,"attrEnd":19847,"openEnd":19848,"closeStart":19868,"closeEnd":19875,"textRuns":[[19848,19868]],"parentId":"ba7c10f4:83","childIds":[]},{"id":"ba7c10f4:85","tag":"span","openStart":19875,"attrEnd":19880,"openEnd":19881,"closeStart":19901,"closeEnd":19908,"textRuns":[[19881,19901]],"parentId":"ba7c10f4:83","childIds":[]},{"id":"ba7c10f4:86","tag":"div","openStart":19950,"attrEnd":19975,"openEnd":19976,"closeStart":20456,"closeEnd":20462,"textRuns":[[19976,19993],[20170,20187],[20339,20356],[20441,20456]],"parentId":"ba7c10f4:65","childIds":["ba7c10f4:87","ba7c10f4:91","ba7c10f4:93"]},{"id":"ba7c10f4:87","tag":"div","openStart":19993,"attrEnd":20013,"openEnd":20014,"closeStart":20164,"closeEnd":20170,"textRuns":[],"parentId":"ba7c10f4:86","childIds":["ba7c10f4:88","ba7c10f4:89","ba7c10f4:90"]},{"id":"ba7c10f4:88","tag":"span","openStart":20014,"attrEnd":20034,"openEnd":20035,"closeStart":20037,"closeEnd":20044,"textRuns":[[20035,20037]],"parentId":"ba7c10f4:87","childIds":[]},{"id":"ba7c10f4:89","tag":"span","openStart":20044,"attrEnd":20065,"openEnd":20066,"closeStart":20082,"closeEnd":20089,"textRuns":[[20066,20082]],"parentId":"ba7c10f4:87","childIds":[]},{"id":"ba7c10f4:90","tag":"span","openStart":20089,"attrEnd":20123,"openEnd":20124,"closeStart":20157,"closeEnd":20164,"textRuns":[[20124,20157]],"parentId":"ba7c10f4:87","childIds":[]},{"id":"ba7c10f4:91","tag":"div","openStart":20187,"attrEnd":20224,"openEnd":20225,"closeStart":20333,"closeEnd":20339,"textRuns":[[20225,20244],[20316,20333]],"parentId":"ba7c10f4:86","childIds":["ba7c10f4:92"]},{"id":"ba7c10f4:92","tag":"input","openStart":20244,"attrEnd":20315,"openEnd":20316,"closeEnd":20316,"textRuns":[],"parentId":"ba7c10f4:91","childIds":[]},{"id":"ba7c10f4:93","tag":"div","openStart":20356,"attrEnd":20378,"openEnd":20379,"closeStart":20435,"closeEnd":20441,"textRuns":[],"parentId":"ba7c10f4:86","childIds":["ba7c10f4:94","ba7c10f4:95"]},{"id":"ba7c10f4:94","tag":"span","openStart":20379,"attrEnd":20384,"openEnd":20385,"closeStart":20397,"closeEnd":20404,"textRuns":[[20385,20397]],"parentId":"ba7c10f4:93","childIds":[]},{"id":"ba7c10f4:95","tag":"span","openStart":20404,"attrEnd":20409,"openEnd":20410,"closeStart":20428,"closeEnd":20435,"textRuns":[[20410,20428]],"parentId":"ba7c10f4:93","childIds":[]},{"id":"ba7c10f4:96","tag":"div","openStart":20477,"attrEnd":20502,"openEnd":20503,"closeStart":21000,"closeEnd":21006,"textRuns":[[20503,20520],[20712,20729],[20881,20898],[20985,21000]],"parentId":"ba7c10f4:65","childIds":["ba7c10f4:97","ba7c10f4:101","ba7c10f4:103"]},{"id":"ba7c10f4:97","tag":"div","openStart":20520,"attrEnd":20540,"openEnd":20541,"closeStart":20706,"closeEnd":20712,"textRuns":[],"parentId":"ba7c10f4:96","childIds":["ba7c10f4:98","ba7c10f4:99","ba7c10f4:100"]},{"id":"ba7c10f4:98","tag":"span","openStart":20541,"attrEnd":20561,"openEnd":20562,"closeStart":20564,"closeEnd":20571,"textRuns":[[20562,20564]],"parentId":"ba7c10f4:97","childIds":[]},{"id":"ba7c10f4:99","tag":"span","openStart":20571,"attrEnd":20592,"openEnd":20593,"closeStart":20624,"closeEnd":20631,"textRuns":[[20593,20624]],"parentId":"ba7c10f4:97","childIds":[]},{"id":"ba7c10f4:100","tag":"span","openStart":20631,"attrEnd":20665,"openEnd":20666,"closeStart":20699,"closeEnd":20706,"textRuns":[[20666,20699]],"parentId":"ba7c10f4:97","childIds":[]},{"id":"ba7c10f4:101","tag":"div","openStart":20729,"attrEnd":20766,"openEnd":20767,"closeStart":20875,"closeEnd":20881,"textRuns":[[20767,20786],[20858,20875]],"parentId":"ba7c10f4:96","childIds":["ba7c10f4:102"]},{"id":"ba7c10f4:102","tag":"input","openStart":20786,"attrEnd":20857,"openEnd":20858,"closeEnd":20858,"textRuns":[],"parentId":"ba7c10f4:101","childIds":[]},{"id":"ba7c10f4:103","tag":"div","openStart":20898,"attrEnd":20920,"openEnd":20921,"closeStart":20979,"closeEnd":20985,"textRuns":[],"parentId":"ba7c10f4:96","childIds":["ba7c10f4:104","ba7c10f4:105"]},{"id":"ba7c10f4:104","tag":"span","openStart":20921,"attrEnd":20926,"openEnd":20927,"closeStart":20941,"closeEnd":20948,"textRuns":[[20927,20941]],"parentId":"ba7c10f4:103","childIds":[]},{"id":"ba7c10f4:105","tag":"span","openStart":20948,"attrEnd":20953,"openEnd":20954,"closeStart":20972,"closeEnd":20979,"textRuns":[[20954,20972]],"parentId":"ba7c10f4:103","childIds":[]},{"id":"ba7c10f4:106","tag":"div","openStart":21080,"attrEnd":21103,"openEnd":21104,"closeStart":24126,"closeEnd":24132,"textRuns":[[21104,21117],[21205,21218],[22845,22859],[22884,22897],[23481,23494],[23567,23580],[23652,23665],[23738,23752],[24115,24126]],"parentId":"ba7c10f4:53","childIds":["ba7c10f4:107","ba7c10f4:109","ba7c10f4:130","ba7c10f4:137","ba7c10f4:138","ba7c10f4:139","ba7c10f4:140"]},{"id":"ba7c10f4:107","tag":"div","openStart":21117,"attrEnd":21141,"openEnd":21142,"closeStart":21199,"closeEnd":21205,"textRuns":[[21170,21199]],"parentId":"ba7c10f4:106","childIds":["ba7c10f4:108"]},{"id":"ba7c10f4:108","tag":"span","openStart":21142,"attrEnd":21159,"openEnd":21160,"closeStart":21163,"closeEnd":21170,"textRuns":[[21160,21163]],"parentId":"ba7c10f4:107","childIds":[]},{"id":"ba7c10f4:109","tag":"div","openStart":21218,"attrEnd":21259,"openEnd":21260,"closeStart":22839,"closeEnd":22845,"textRuns":[[21260,21275],[21329,21344],[22745,22760],[22826,22839]],"parentId":"ba7c10f4:106","childIds":["ba7c10f4:110","ba7c10f4:111","ba7c10f4:112","ba7c10f4:129"]},{"id":"ba7c10f4:110","tag":"span","openStart":21275,"attrEnd":21294,"openEnd":21295,"closeStart":21295,"closeEnd":21302,"textRuns":[],"parentId":"ba7c10f4:109","childIds":[]},{"id":"ba7c10f4:111","tag":"span","openStart":21302,"attrEnd":21321,"openEnd":21322,"closeStart":21322,"closeEnd":21329,"textRuns":[],"parentId":"ba7c10f4:109","childIds":[]},{"id":"ba7c10f4:112","tag":"div","openStart":21344,"attrEnd":21368,"openEnd":21369,"closeStart":22739,"closeEnd":22745,"textRuns":[[21369,21386],[22638,22655],[22724,22739]],"parentId":"ba7c10f4:109","childIds":["ba7c10f4:113","ba7c10f4:128"]},{"id":"ba7c10f4:113","tag":"svg","openStart":21386,"attrEnd":21466,"openEnd":21467,"closeStart":22632,"closeEnd":22638,"textRuns":[[21467,21486],[22615,22632]],"parentId":"ba7c10f4:112","childIds":["ba7c10f4:114"]},{"id":"ba7c10f4:114","tag":"g","openStart":21486,"attrEnd":21602,"openEnd":21603,"closeStart":22611,"closeEnd":22615,"textRuns":[[21603,21624],[21677,21698],[21744,21765],[21810,21831],[21878,21899],[21946,21967],[22068,22089],[22125,22146],[22189,22210],[22256,22277],[22330,22351],[22408,22429],[22499,22520],[22592,22611]],"parentId":"ba7c10f4:113","childIds":["ba7c10f4:115","ba7c10f4:116","ba7c10f4:117","ba7c10f4:118","ba7c10f4:119","ba7c10f4:120","ba7c10f4:121","ba7c10f4:122","ba7c10f4:123","ba7c10f4:124","ba7c10f4:125","ba7c10f4:126","ba7c10f4:127"]},{"id":"ba7c10f4:115","tag":"path","openStart":21624,"attrEnd":21669,"openEnd":21670,"closeStart":21670,"closeEnd":21677,"textRuns":[],"parentId":"ba7c10f4:114","childIds":[]},{"id":"ba7c10f4:116","tag":"line","openStart":21698,"attrEnd":21736,"openEnd":21737,"closeStart":21737,"closeEnd":21744,"textRuns":[],"parentId":"ba7c10f4:114","childIds":[]},{"id":"ba7c10f4:117","tag":"line","openStart":21765,"attrEnd":21802,"openEnd":21803,"closeStart":21803,"closeEnd":21810,"textRuns":[],"parentId":"ba7c10f4:114","childIds":[]},{"id":"ba7c10f4:118","tag":"line","openStart":21831,"attrEnd":21870,"openEnd":21871,"closeStart":21871,"closeEnd":21878,"textRuns":[],"parentId":"ba7c10f4:114","childIds":[]},{"id":"ba7c10f4:119","tag":"line","openStart":21899,"attrEnd":21938,"openEnd":21939,"closeStart":21939,"closeEnd":21946,"textRuns":[],"parentId":"ba7c10f4:114","childIds":[]},{"id":"ba7c10f4:120","tag":"path","openStart":21967,"attrEnd":22060,"openEnd":22061,"closeStart":22061,"closeEnd":22068,"textRuns":[],"parentId":"ba7c10f4:114","childIds":[]},{"id":"ba7c10f4:121","tag":"path","openStart":22089,"attrEnd":22117,"openEnd":22118,"closeStart":22118,"closeEnd":22125,"textRuns":[],"parentId":"ba7c10f4:114","childIds":[]},{"id":"ba7c10f4:122","tag":"path","openStart":22146,"attrEnd":22181,"openEnd":22182,"closeStart":22182,"closeEnd":22189,"textRuns":[],"parentId":"ba7c10f4:114","childIds":[]},{"id":"ba7c10f4:123","tag":"path","openStart":22210,"attrEnd":22248,"openEnd":22249,"closeStart":22249,"closeEnd":22256,"textRuns":[],"parentId":"ba7c10f4:114","childIds":[]},{"id":"ba7c10f4:124","tag":"path","openStart":22277,"attrEnd":22322,"openEnd":22323,"closeStart":22323,"closeEnd":22330,"textRuns":[],"parentId":"ba7c10f4:114","childIds":[]},{"id":"ba7c10f4:125","tag":"path","openStart":22351,"attrEnd":22400,"openEnd":22401,"closeStart":22401,"closeEnd":22408,"textRuns":[],"parentId":"ba7c10f4:114","childIds":[]},{"id":"ba7c10f4:126","tag":"line","openStart":22429,"attrEnd":22491,"openEnd":22492,"closeStart":22492,"closeEnd":22499,"textRuns":[],"parentId":"ba7c10f4:114","childIds":[]},{"id":"ba7c10f4:127","tag":"line","openStart":22520,"attrEnd":22584,"openEnd":22585,"closeStart":22585,"closeEnd":22592,"textRuns":[],"parentId":"ba7c10f4:114","childIds":[]},{"id":"ba7c10f4:128","tag":"span","openStart":22655,"attrEnd":22676,"openEnd":22677,"closeStart":22717,"closeEnd":22724,"textRuns":[[22677,22717]],"parentId":"ba7c10f4:112","childIds":[]},{"id":"ba7c10f4:129","tag":"img","openStart":22760,"attrEnd":22825,"openEnd":22826,"closeEnd":22826,"textRuns":[],"parentId":"ba7c10f4:109","childIds":[]},{"id":"ba7c10f4:130","tag":"div","openStart":22897,"attrEnd":22920,"openEnd":22921,"closeStart":23475,"closeEnd":23481,"textRuns":[[22921,22936],[23101,23116],[23274,23289],[23462,23475]],"parentId":"ba7c10f4:106","childIds":["ba7c10f4:131","ba7c10f4:133","ba7c10f4:135"]},{"id":"ba7c10f4:131","tag":"button","openStart":22936,"attrEnd":22993,"openEnd":22994,"closeStart":23092,"closeEnd":23101,"textRuns":[[22994,23011],[23053,23092]],"parentId":"ba7c10f4:130","childIds":["ba7c10f4:132"]},{"id":"ba7c10f4:132","tag":"span","openStart":23011,"attrEnd":23041,"openEnd":23042,"closeStart":23046,"closeEnd":23053,"textRuns":[[23042,23046]],"parentId":"ba7c10f4:131","childIds":[]},{"id":"ba7c10f4:133","tag":"button","openStart":23116,"attrEnd":23171,"openEnd":23172,"closeStart":23265,"closeEnd":23274,"textRuns":[[23172,23189],[23230,23265]],"parentId":"ba7c10f4:130","childIds":["ba7c10f4:134"]},{"id":"ba7c10f4:134","tag":"span","openStart":23189,"attrEnd":23218,"openEnd":23219,"closeStart":23223,"closeEnd":23230,"textRuns":[[23219,23223]],"parentId":"ba7c10f4:133","childIds":[]},{"id":"ba7c10f4:135","tag":"button","openStart":23289,"attrEnd":23346,"openEnd":23347,"closeStart":23453,"closeEnd":23462,"textRuns":[[23347,23364],[23406,23453]],"parentId":"ba7c10f4:130","childIds":["ba7c10f4:136"]},{"id":"ba7c10f4:136","tag":"span","openStart":23364,"attrEnd":23394,"openEnd":23395,"closeStart":23399,"closeEnd":23406,"textRuns":[[23395,23399]],"parentId":"ba7c10f4:135","childIds":[]},{"id":"ba7c10f4:137","tag":"input","openStart":23494,"attrEnd":23566,"openEnd":23567,"closeEnd":23567,"styleAttr":[23553,23565],"textRuns":[],"parentId":"ba7c10f4:106","childIds":[]},{"id":"ba7c10f4:138","tag":"input","openStart":23580,"attrEnd":23651,"openEnd":23652,"closeEnd":23652,"styleAttr":[23638,23650],"textRuns":[],"parentId":"ba7c10f4:106","childIds":[]},{"id":"ba7c10f4:139","tag":"input","openStart":23665,"attrEnd":23737,"openEnd":23738,"closeEnd":23738,"styleAttr":[23724,23736],"textRuns":[],"parentId":"ba7c10f4:106","childIds":[]},{"id":"ba7c10f4:140","tag":"div","openStart":23752,"attrEnd":23773,"openEnd":23774,"closeStart":24109,"closeEnd":24115,"textRuns":[[23774,23789],[23880,23895],[24039,24054],[24096,24109]],"parentId":"ba7c10f4:106","childIds":["ba7c10f4:141","ba7c10f4:142","ba7c10f4:143"]},{"id":"ba7c10f4:141","tag":"button","openStart":23789,"attrEnd":23832,"openEnd":23833,"closeStart":23871,"closeEnd":23880,"textRuns":[[23833,23871]],"parentId":"ba7c10f4:140","childIds":[]},{"id":"ba7c10f4:142","tag":"div","openStart":23895,"attrEnd":23928,"openEnd":23929,"closeStart":24033,"closeEnd":24039,"textRuns":[[23929,24033]],"parentId":"ba7c10f4:140","childIds":[]},{"id":"ba7c10f4:143","tag":"div","openStart":24054,"attrEnd":24089,"openEnd":24090,"closeStart":24090,"closeEnd":24096,"textRuns":[],"parentId":"ba7c10f4:140","childIds":[]},{"id":"ba7c10f4:144","tag":"div","openStart":24169,"attrEnd":24191,"openEnd":24192,"closeStart":26389,"closeEnd":26395,"textRuns":[[24192,24205],[24237,24250],[26378,26389]],"parentId":"ba7c10f4:53","childIds":["ba7c10f4:145","ba7c10f4:146"]},{"id":"ba7c10f4:145","tag":"div","openStart":24205,"attrEnd":24230,"openEnd":24231,"closeStart":24231,"closeEnd":24237,"textRuns":[],"parentId":"ba7c10f4:144","childIds":[]},{"id":"ba7c10f4:146","tag":"div","openStart":24250,"attrEnd":24268,"openEnd":24269,"closeStart":26372,"closeEnd":26378,"textRuns":[[24269,24284],[24797,24812],[25317,25332],[25832,25847],[26359,26372]],"parentId":"ba7c10f4:144","childIds":["ba7c10f4:147","ba7c10f4:153","ba7c10f4:159","ba7c10f4:165"]},{"id":"ba7c10f4:147","tag":"div","openStart":24284,"attrEnd":24307,"openEnd":24308,"closeStart":24791,"closeEnd":24797,"textRuns":[[24308,24325],[24642,24659],[24776,24791]],"parentId":"ba7c10f4:146","childIds":["ba7c10f4:148","ba7c10f4:152"]},{"id":"ba7c10f4:148","tag":"div","openStart":24325,"attrEnd":24348,"openEnd":24349,"closeStart":24636,"closeEnd":24642,"textRuns":[[24349,24368],[24568,24587],[24619,24636]],"parentId":"ba7c10f4:147","childIds":["ba7c10f4:149","ba7c10f4:151"]},{"id":"ba7c10f4:149","tag":"svg","openStart":24368,"attrEnd":24411,"openEnd":24412,"closeStart":24562,"closeEnd":24568,"textRuns":[],"parentId":"ba7c10f4:148","childIds":["ba7c10f4:150"]},{"id":"ba7c10f4:150","tag":"path","openStart":24412,"attrEnd":24554,"openEnd":24555,"closeStart":24555,"closeEnd":24562,"textRuns":[],"parentId":"ba7c10f4:149","childIds":[]},{"id":"ba7c10f4:151","tag":"span","openStart":24587,"attrEnd":24609,"openEnd":24610,"closeStart":24612,"closeEnd":24619,"textRuns":[[24610,24612]],"parentId":"ba7c10f4:148","childIds":[]},{"id":"ba7c10f4:152","tag":"div","openStart":24659,"attrEnd":24737,"openEnd":24738,"closeStart":24770,"closeEnd":24776,"textRuns":[[24738,24770]],"parentId":"ba7c10f4:147","childIds":[]},{"id":"ba7c10f4:153","tag":"div","openStart":24812,"attrEnd":24835,"openEnd":24836,"closeStart":25311,"closeEnd":25317,"textRuns":[[24836,24853],[25170,25187],[25296,25311]],"parentId":"ba7c10f4:146","childIds":["ba7c10f4:154","ba7c10f4:158"]},{"id":"ba7c10f4:154","tag":"div","openStart":24853,"attrEnd":24876,"openEnd":24877,"closeStart":25164,"closeEnd":25170,"textRuns":[[24877,24896],[25096,25115],[25147,25164]],"parentId":"ba7c10f4:153","childIds":["ba7c10f4:155","ba7c10f4:157"]},{"id":"ba7c10f4:155","tag":"svg","openStart":24896,"attrEnd":24939,"openEnd":24940,"closeStart":25090,"closeEnd":25096,"textRuns":[],"parentId":"ba7c10f4:154","childIds":["ba7c10f4:156"]},{"id":"ba7c10f4:156","tag":"path","openStart":24940,"attrEnd":25082,"openEnd":25083,"closeStart":25083,"closeEnd":25090,"textRuns":[],"parentId":"ba7c10f4:155","childIds":[]},{"id":"ba7c10f4:157","tag":"span","openStart":25115,"attrEnd":25137,"openEnd":25138,"closeStart":25140,"closeEnd":25147,"textRuns":[[25138,25140]],"parentId":"ba7c10f4:154","childIds":[]},{"id":"ba7c10f4:158","tag":"div","openStart":25187,"attrEnd":25265,"openEnd":25266,"closeStart":25290,"closeEnd":25296,"textRuns":[[25266,25290]],"parentId":"ba7c10f4:153","childIds":[]},{"id":"ba7c10f4:159","tag":"div","openStart":25332,"attrEnd":25355,"openEnd":25356,"closeStart":25826,"closeEnd":25832,"textRuns":[[25356,25373],[25690,25707],[25811,25826]],"parentId":"ba7c10f4:146","childIds":["ba7c10f4:160","ba7c10f4:164"]},{"id":"ba7c10f4:160","tag":"div","openStart":25373,"attrEnd":25396,"openEnd":25397,"closeStart":25684,"closeEnd":25690,"textRuns":[[25397,25416],[25616,25635],[25667,25684]],"parentId":"ba7c10f4:159","childIds":["ba7c10f4:161","ba7c10f4:163"]},{"id":"ba7c10f4:161","tag":"svg","openStart":25416,"attrEnd":25459,"openEnd":25460,"closeStart":25610,"closeEnd":25616,"textRuns":[],"parentId":"ba7c10f4:160","childIds":["ba7c10f4:162"]},{"id":"ba7c10f4:162","tag":"path","openStart":25460,"attrEnd":25602,"openEnd":25603,"closeStart":25603,"closeEnd":25610,"textRuns":[],"parentId":"ba7c10f4:161","childIds":[]},{"id":"ba7c10f4:163","tag":"span","openStart":25635,"attrEnd":25657,"openEnd":25658,"closeStart":25660,"closeEnd":25667,"textRuns":[[25658,25660]],"parentId":"ba7c10f4:160","childIds":[]},{"id":"ba7c10f4:164","tag":"div","openStart":25707,"attrEnd":25785,"openEnd":25786,"closeStart":25805,"closeEnd":25811,"textRuns":[[25786,25805]],"parentId":"ba7c10f4:159","childIds":[]},{"id":"ba7c10f4:165","tag":"div","openStart":25847,"attrEnd":25870,"openEnd":25871,"closeStart":26353,"closeEnd":26359,"textRuns":[[25871,25888],[26205,26222],[26338,26353]],"parentId":"ba7c10f4:146","childIds":["ba7c10f4:166","ba7c10f4:170"]},{"id":"ba7c10f4:166","tag":"div","openStart":25888,"attrEnd":25911,"openEnd":25912,"closeStart":26199,"closeEnd":26205,"textRuns":[[25912,25931],[26131,26150],[26182,26199]],"parentId":"ba7c10f4:165","childIds":["ba7c10f4:167","ba7c10f4:169"]},{"id":"ba7c10f4:167","tag":"svg","openStart":25931,"attrEnd":25974,"openEnd":25975,"closeStart":26125,"closeEnd":26131,"textRuns":[],"parentId":"ba7c10f4:166","childIds":["ba7c10f4:168"]},{"id":"ba7c10f4:168","tag":"path","openStart":25975,"attrEnd":26117,"openEnd":26118,"closeStart":26118,"closeEnd":26125,"textRuns":[],"parentId":"ba7c10f4:167","childIds":[]},{"id":"ba7c10f4:169","tag":"span","openStart":26150,"attrEnd":26172,"openEnd":26173,"closeStart":26175,"closeEnd":26182,"textRuns":[[26173,26175]],"parentId":"ba7c10f4:166","childIds":[]},{"id":"ba7c10f4:170","tag":"div","openStart":26222,"attrEnd":26300,"openEnd":26301,"closeStart":26332,"closeEnd":26338,"textRuns":[[26301,26332]],"parentId":"ba7c10f4:165","childIds":[]},{"id":"ba7c10f4:171","tag":"div","openStart":26421,"attrEnd":26446,"openEnd":26447,"closeStart":26721,"closeEnd":26727,"textRuns":[[26447,26458],[26511,26522],[26547,26558],[26606,26617],[26642,26653],[26712,26721]],"parentId":"ba7c10f4:36","childIds":["ba7c10f4:172","ba7c10f4:174","ba7c10f4:175","ba7c10f4:176","ba7c10f4:177"]},{"id":"ba7c10f4:172","tag":"span","openStart":26458,"attrEnd":26463,"openEnd":26464,"closeStart":26504,"closeEnd":26511,"textRuns":[],"parentId":"ba7c10f4:171","childIds":["ba7c10f4:173"]},{"id":"ba7c10f4:173","tag":"b","openStart":26464,"attrEnd":26466,"openEnd":26467,"closeStart":26500,"closeEnd":26504,"textRuns":[[26467,26500]],"parentId":"ba7c10f4:172","childIds":[]},{"id":"ba7c10f4:174","tag":"span","openStart":26522,"attrEnd":26539,"openEnd":26540,"closeStart":26540,"closeEnd":26547,"textRuns":[],"parentId":"ba7c10f4:171","childIds":[]},{"id":"ba7c10f4:175","tag":"span","openStart":26558,"attrEnd":26563,"openEnd":26564,"closeStart":26599,"closeEnd":26606,"textRuns":[[26564,26599]],"parentId":"ba7c10f4:171","childIds":[]},{"id":"ba7c10f4:176","tag":"span","openStart":26617,"attrEnd":26634,"openEnd":26635,"closeStart":26635,"closeEnd":26642,"textRuns":[],"parentId":"ba7c10f4:171","childIds":[]},{"id":"ba7c10f4:177","tag":"span","openStart":26653,"attrEnd":26658,"openEnd":26659,"closeStart":26705,"closeEnd":26712,"textRuns":[[26659,26683]],"parentId":"ba7c10f4:171","childIds":["ba7c10f4:178"]},{"id":"ba7c10f4:178","tag":"b","openStart":26683,"attrEnd":26685,"openEnd":26686,"closeStart":26701,"closeEnd":26705,"textRuns":[[26686,26701]],"parentId":"ba7c10f4:177","childIds":[]}],"literals":[[26885,26898],[26943,26955],[27162,27168],[27181,27182],[27220,27230],[27285,27287],[27434,27438],[27482,27488],[27756,27802],[27808,27816],[27822,27835],[27871,27894],[27959,27964],[28390,28400],[28410,28420],[28431,28441],[28488,28494],[28540,28547],[28594,28602],[28652,28663],[28711,28720],[28809,28814],[28818,28828],[28832,28840],[28844,28852],[28861,28865],[28870,28879],[28884,28891],[28896,28903],[28912,28917],[28921,28931],[28935,28943],[28947,28955],[29174,29179],[29232,29238],[29520,29521],[29613,29623],[29698,29704],[29734,29737],[29833,29838],[29913,29920],[30257,30261],[30358,30362],[30396,30458],[30592,30597],[30607,30612],[30622,30627],[30637,30642],[30676,30683],[30693,30700],[30710,30717],[30727,30734],[30768,30775],[30785,30792],[30802,30809],[30819,30826],[30860,30867],[30877,30884],[30894,30901],[30911,30918],[31042,31048],[31086,31086],[31118,31125],[31162,31162],[31194,31201],[31239,31239],[31271,31280],[31298,31302],[31906,31906],[31928,31931],[31994,32002],[32075,32079],[32173,33766],[33940,33940],[33960,33960],[33996,33997],[34020,34021],[34192,34196],[34290,34294],[34326,34330],[34359,34363],[34419,34446],[34475,34537],[34695,34739],[34761,34765],[34788,34800],[34804,34820],[34874,34898],[34971,34975],[35024,35029],[35049,35055],[35134,35139],[35159,35165],[35243,35248],[35268,35274],[35353,35357],[35464,35469],[35695,35699],[35730,35734],[35795,35822],[35853,35953],[36006,36010],[36071,36107],[36138,36179],[36211,36244],[36285,36334],[36367,36371],[36412,36417],[36504,36513],[36559,36567],[36611,36615],[36681,36685],[36720,36733],[36744,36748],[36753,36758],[36793,36798],[36873,36877],[36915,36920],[37019,37026],[37053,37059],[37162,37168],[37214,37227],[37272,37284],[37417,37421],[37449,37455],[37669,37676],[37771,37772],[37809,37818],[37842,37852],[37905,37957],[38157,38174],[38256,38279],[38366,38367],[38403,38414],[38511,38516],[38563,38576],[38660,38663],[38719,38723]]}</script></body></html>
