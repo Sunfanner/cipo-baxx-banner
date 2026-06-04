@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Таблица размеров — Cipo & Baxx</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#0c0c0c; --fg:#ffffff; --red:#e8333a; --muted:#6a6a6a; --dim:#1e1e1e; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html,body { background:#ededeb; font-family:"Manrope",sans-serif; min-height:100vh; padding:48px 32px 96px; display:flex; flex-direction:column; align-items:center; }
+
+  /* CHROME */
+  .preview-chrome { width:100%; max-width:900px; display:flex; align-items:center; justify-content:space-between; margin-bottom:22px; }
+  .crumbs { display:flex; align-items:center; gap:14px; font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#6a6a6a; }
+  .crumbs .dot { width:6px; height:6px; background:#e8333a; border-radius:50%; }
+  .crumbs b { color:#1a1a1a; font-weight:700; }
+  .actions { display:flex; gap:10px; }
+  .dl-btn { appearance:none; border:1px solid #d0d0ce; background:#fff; cursor:pointer; font-family:"Manrope",sans-serif; font-weight:700; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:#1a1a1a; padding:8px 18px; border-radius:4px; transition:background .15s,color .15s; }
+  .dl-btn:hover { background:#1a1a1a; color:#fff; border-color:#1a1a1a; }
+
+  /* STAGE */
+  .stage { width:100%; max-width:900px; background:#fff; border-radius:6px; padding:26px; box-shadow:0 30px 60px -20px rgba(0,0,0,0.18); }
+  .stage-head { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:16px; font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#9a9a9a; }
+  .stage-head .red { color:#e8333a; }
+  .banner-wrap { display:block; margin:0 auto; overflow:hidden; }
+  .banner-shell { transform-origin:top left; }
+
+  /* BANNER */
+  .banner { width:1800px; height:2400px; background:var(--bg); color:var(--fg); position:relative; font-family:"Manrope",sans-serif; overflow:hidden; }
+  .grid-bg { position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,0.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.018) 1px,transparent 1px); background-size:60px 60px; pointer-events:none; }
+  .left-bar { position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--red); z-index:5; }
+  .bottom-bar { position:absolute; left:0; right:0; bottom:0; height:3px; background:var(--red); opacity:0.5; z-index:5; }
+  .crop { position:absolute; width:20px; height:20px; border-color:rgba(255,255,255,0.15); border-style:solid; z-index:6; }
+  .crop.tl { top:26px; left:26px; border-width:1px 0 0 1px; }
+  .crop.tr { top:26px; right:26px; border-width:1px 1px 0 0; }
+  .crop.bl { bottom:26px; left:26px; border-width:0 0 1px 1px; }
+  .crop.br { bottom:26px; right:26px; border-width:0 1px 1px 0; }
+
+  .top-label { position:absolute; top:64px; left:72px; font-family:"JetBrains Mono",monospace; font-size:18px; letter-spacing:0.22em; text-transform:uppercase; color:#fff; display:flex; align-items:center; gap:18px; z-index:6; }
+  .top-label::before { content:""; display:inline-block; width:44px; height:2px; background:var(--red); }
+  .top-label .spec { color:var(--muted); margin-left:6px; }
+
+  .logo { position:absolute; top:52px; right:72px; text-align:right; line-height:1; z-index:6; }
+  .logo .denims { font-style:italic; font-weight:500; font-size:22px; color:var(--muted); letter-spacing:0.02em; margin-bottom:8px; }
+  .logo .cipo { font-weight:800; font-size:48px; color:#fff; margin-bottom:4px; }
+  .logo .cipo .amp { color:var(--red); }
+  .logo .baxx { font-weight:900; font-size:48px; color:#fff; }
+  .logo .baxx sup { font-size:20px; font-weight:600; vertical-align:top; }
+
+  /* ===== ZONE 1: HEADER (top 180px of content) ===== */
+  .zone-header {
+    position:absolute;
+    left:72px; right:72px; top:128px;
+    height:220px;
+  }
+  .banner-title .t1 { font-weight:900; font-size:88px; line-height:0.9; letter-spacing:-0.03em; color:#fff; text-transform:uppercase; display:block; }
+  .banner-title .t2 { font-weight:900; font-size:88px; line-height:0.9; letter-spacing:-0.03em; color:var(--red); text-transform:uppercase; display:block; }
+  .title-divider { height:3px; width:100px; background:var(--red); margin-top:22px; }
+
+  /* ===== ZONE 2: ILLUSTRATION + LEGEND (middle) ===== */
+  .zone-body {
+    position:absolute;
+    left:72px; right:72px;
+    top:248px; height:940px;
+    display:flex; gap:60px; align-items:stretch;
+  }
+
+  /* LEFT: illustration */
+  .illus-col { width:560px; flex-shrink:0; display:flex; flex-direction:column; justify-content:center; }
+  .illus-col svg { width:100%; height:auto; display:block; }
+
+  .illus-photo-wrap {
+    position:relative; width:100%;
+    aspect-ratio: 520 / 760;
+    background:#0a0a0a;
+    overflow:hidden;
+  }
+  .illus-photo-wrap #jeans-photo {
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:contain; object-position:center;
+    display:block;
+  }
+  .illus-placeholder {
+    position:absolute; inset:0;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    border:1px dashed #2a2a2a;
+  }
+  .illus-arrows {
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    pointer-events:none; overflow:visible;
+  }
+  .ui-overlay { width:100%; max-width:900px; margin-top:20px; display:flex; justify-content:center; }
+  .upload-row-ui { display:flex; gap:16px; }
+  .upload-btn-ui { appearance:none; background:#1a1a1a; border:1px solid #2a2a2a; color:#888; font-family:"Manrope",sans-serif; font-size:16px; font-weight:600; padding:14px 32px; border-radius:6px; cursor:pointer; transition:background .15s,color .15s,border-color .15s; letter-spacing:0.02em; }
+  .upload-btn-ui:hover { background:#252525; border-color:#e8333a; color:#fff; }
+  .upload-btn-ui.loaded { border-color:#34c759; color:#34c759; }
+
+  /* Subtitle under illustration */
+  .illus-subtitle {
+    margin-top:28px;
+    font-size:24px; font-weight:500; color:#555; line-height:1.4;
+  }
+
+  /* RIGHT: legend */
+  .legend-col { flex:1; display:flex; flex-direction:row; gap:40px; align-items:flex-start; margin-top:120px; }
+  .legend-col-left { flex:1; display:flex; flex-direction:column; }
+  .legend-col-right { flex:1; display:flex; flex-direction:column; }
+
+  .legend-item { display:flex; align-items:flex-start; gap:28px; padding:30px 0; border-bottom:1px solid #1e1e1e; }
+  .legend-item:first-child { border-top:1px solid #1e1e1e; }
+  .legend-letter { font-weight:900; font-size:56px; line-height:1; color:var(--red); font-family:"JetBrains Mono",monospace; flex-shrink:0; width:56px; }
+  .legend-text { display:flex; flex-direction:column; gap:6px; padding-top:6px; }
+  .legend-name { font-weight:800; font-size:28px; color:#fff; letter-spacing:0.04em; text-transform:uppercase; }
+  .legend-desc { font-size:20px; font-weight:500; color:#555; line-height:1.35; }
+
+  .tolerance-note { margin-top:28px; display:flex; align-items:flex-start; gap:16px; padding:22px 26px; background:#111; border-left:3px solid var(--red); border-radius:4px; }
+  .tolerance-note .tol-icon { color:var(--red); font-size:24px; flex-shrink:0; margin-top:2px; }
+  .tolerance-note .tol-text { font-size:20px; font-weight:500; color:#666; line-height:1.45; }
+  .tolerance-note .tol-text b { color:#999; font-weight:700; }
+
+  /* ===== ZONE 3: TABLE (bottom half) ===== */
+  .zone-table {
+    position:absolute;
+    left:72px; right:72px;
+    top:1108px; bottom:100px;
+  }
+
+  /* Divider line */
+  .zone-table::before {
+    content:"";
+    position:absolute; top:-30px; left:0; right:0;
+    height:1px; background:var(--dim);
+  }
+
+  .table-label { font-family:"JetBrains Mono",monospace; font-size:16px; letter-spacing:0.22em; text-transform:uppercase; color:var(--muted); margin-bottom:30px; display:flex; align-items:center; gap:16px; }
+  .size-indicator {
+    position:absolute;
+    left:30%; right:72px;
+    top:890px;
+    display:flex; align-items:center; justify-content:center; gap:0;
+  }
+  .si-item { display:flex; flex-direction:column; align-items:center; gap:8px; }
+  .si-num {
+    font-family:"JetBrains Mono",monospace; font-weight:900;
+    font-size:160px; line-height:1; color:var(--red);
+    letter-spacing:-0.04em;
+  }
+  .si-slash {
+    font-family:"JetBrains Mono",monospace; font-weight:900;
+    font-size:160px; line-height:1; color:#333;
+    letter-spacing:-0.04em; margin:0 16px; align-self:flex-start;
+  }
+  .si-label {
+    font-family:"Manrope",sans-serif; font-weight:600;
+    font-size:28px; letter-spacing:0.14em; text-transform:uppercase;
+    color:#555;
+  }
+  .table-label::before { content:""; display:inline-block; width:32px; height:2px; background:var(--red); }
+  .si-arrow-left { margin-right: auto; margin-left: 20px; }
+  .si-arrow-right { margin-left: auto; margin-right: 20px; }
+
+  
+
+  .size-table { width:100%; border-collapse:collapse; font-family:"Manrope",sans-serif; }
+
+  .size-table thead tr:first-child { background:#111; }
+  .size-table thead th { padding:26px 16px; font-size:20px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); text-align:center; border-bottom:2px solid var(--dim); }
+  .size-table thead th:first-child { text-align:center; padding-left:0; font-family:"JetBrains Mono",monospace; font-size:22px; letter-spacing:0.16em; color:#fff; font-weight:700; }
+  .size-table thead th.col-letter { color:var(--red); font-size:44px; font-weight:900; font-family:"JetBrains Mono",monospace; line-height:1; padding-bottom:10px; }
+  .size-table thead th.col-letter .d-note { font-size:18px; font-weight:500; color:#fff; display:block; margin-top:8px; letter-spacing:0.04em; font-family:"Manrope",sans-serif; }
+
+  .size-table .subhead th { padding:12px 16px 16px; font-size:16px; font-weight:500; color:#333; letter-spacing:0.05em; text-transform:uppercase; background:#0a0a0a; border-bottom:1px solid var(--dim); }
+  .size-table .subhead th:first-child { padding-left:32px; text-align:left; }
+
+  .size-table tbody tr:nth-child(even) { background:#0f0f0f; }
+  .size-table tbody tr { border-bottom:1px solid #161616; }
+  .size-table tbody td { padding:16px 16px; font-size:30px; font-weight:600; color:#ccc; text-align:center; letter-spacing:0.01em; }
+  .size-table tbody td:first-child { text-align:center; padding-left:0; }
+
+  .size-badge { display:inline-flex; align-items:center; justify-content:center; width:94px; height:60px; background:transparent; border:none; font-family:"JetBrains Mono",monospace; font-size:44px; font-weight:900; color:var(--red); letter-spacing:0.02em; }
+
+  /* Bottom strip */
+  .bottom-strip { position:absolute; bottom:28px; left:72px; right:72px; display:flex; align-items:center; justify-content:center; gap:36px; font-family:"JetBrains Mono",monospace; font-size:17px; letter-spacing:0.16em; text-transform:uppercase; color:#333; }
+  .bottom-strip b { color:#555; font-weight:700; }
+  .bottom-strip .bdot { width:5px; height:5px; background:var(--red); border-radius:50%; opacity:0.6; }
+</style>
+</head>
+<body>
+
+<div class="preview-chrome">
+  <div class="crumbs">
+    <span class="dot"></span>
+    <span>CIPO &amp; BAXX · PRODUCT</span>
+    <span>/</span>
+    <b>SIZE CHART — DENIM</b>
+    <span>/</span>
+    <span>1800 × 2400</span>
+  </div>
+  <div class="actions">
+    <button class="dl-btn" onclick="document.getElementById('xls-input').click()">↑ XLS</button>
+    <input type="file" id="xls-input" accept=".xls,.xlsx" style="display:none" onchange="loadExcel(this)">
+    <button class="dl-btn" onclick="downloadPng()">↓ PNG</button>
+    <button class="dl-btn" onclick="downloadHtml()">↓ HTML</button>
+  </div>
+</div>
+
+<div class="stage">
+  <div class="stage-head">
+    <div><b>BANNER · ТАБЛИЦА РАЗМЕРОВ</b> · Превью 1:1</div>
+    <div><span class="red">●</span> 1800×2400 · 3:4</div>
+  </div>
+  <div class="banner-wrap">
+  <div class="banner-shell">
+  <div class="banner" id="banner">
+
+    <div class="grid-bg"></div>
+    <div class="left-bar"></div>
+    <div class="bottom-bar"></div>
+    <div class="crop tl"></div><div class="crop tr"></div>
+    <div class="crop bl"></div><div class="crop br"></div>
+
+    <div class="top-label"><span>SIZE GUIDE</span><span class="spec">· DENIM CONFIGURATOR</span></div>
+
+    <div class="logo">
+      <div class="denims">denim's</div>
+      <div class="cipo">CIPO <span class="amp">&amp;</span></div>
+      <div class="baxx">BAXX<sup>®</sup></div>
+    </div>
+
+    <!-- ZONE 1: HEADER -->
+    <div class="zone-header">
+      <div class="banner-title">
+        <span class="t1">ВЫБИРАЙТЕ</span>
+        <span class="t2">РАЗМЕР ПРАВИЛЬНО</span>
+      </div>
+      <div class="title-divider"></div>
+    </div>
+
+    <!-- ZONE 2: ILLUSTRATION + LEGEND -->
+    <div class="zone-body">
+
+      <!-- Illustration -->
+      <div class="illus-col">
+        <div class="illus-photo-wrap" id="illus-wrap">
+          <!-- Фото джинсов -->
+          <img id="jeans-photo" src="" alt="" style="display:none; width:100%; height:100%; object-position:center; position:absolute; inset:0;">
+          <!-- Placeholder когда фото не загружено -->
+          <div class="illus-placeholder" id="illus-placeholder">
+            <svg viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg" opacity="0.15">
+              <path d="M40 20 L160 20 L160 50 L40 50 Z" fill="#e8333a"/>
+              <path d="M40 50 L36 160 L28 270 L86 270 L100 150 L114 270 L172 270 L164 160 L160 50" fill="#333"/>
+              <line x1="100" y1="50" x2="100" y2="150" stroke="#555" stroke-width="1" stroke-dasharray="4 3"/>
+            </svg>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#333;letter-spacing:0.1em;margin-top:12px;">ЗАГРУЗИТЕ ФОТО</span>
+          </div>
+          <!-- SVG оверлей — только стрелки, привязаны к % от размера контейнера -->
+          <svg class="illus-arrows" viewBox="0 0 520 760" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <!-- A — Талия (~8% от верха = y≈61) -->
+            <line x1="98" y1="61" x2="422" y2="61" stroke="#e8333a" stroke-width="3.5"/>
+            <line x1="98" y1="47" x2="98" y2="75" stroke="#e8333a" stroke-width="2.5"/>
+            <line x1="422" y1="47" x2="422" y2="75" stroke="#e8333a" stroke-width="2.5"/>
+            <circle cx="20" cy="61" r="20" fill="#e8333a"/>
+            <text x="20" y="69" text-anchor="middle" fill="#fff" font-family="JetBrains Mono" font-weight="700" font-size="22">A</text>
+
+            <!-- B — V-образная линия по паховой области -->
+            <polyline points="92,180 260,290 428,180" fill="none" stroke="#e8333a" stroke-width="3.5" stroke-linejoin="round"/>
+            <line x1="92" y1="166" x2="92" y2="194" stroke="#e8333a" stroke-width="2.5"/>
+            <line x1="428" y1="166" x2="428" y2="194" stroke="#e8333a" stroke-width="2.5"/>
+            <circle cx="14" cy="180" r="20" fill="#e8333a"/>
+            <text x="14" y="188" text-anchor="middle" fill="#fff" font-family="JetBrains Mono" font-weight="700" font-size="22">B</text>
+
+            <!-- C — Низ штанины -->
+            <line x1="112" y1="707" x2="222" y2="707" stroke="#e8333a" stroke-width="3.5"/>
+            <line x1="112" y1="693" x2="112" y2="721" stroke="#e8333a" stroke-width="2.5"/>
+            <line x1="222" y1="693" x2="222" y2="721" stroke="#e8333a" stroke-width="2.5"/>
+            <circle cx="48" cy="707" r="20" fill="#e8333a"/>
+            <text x="48" y="715" text-anchor="middle" fill="#fff" font-family="JetBrains Mono" font-weight="700" font-size="22">C</text>
+
+          </svg>
+        </div>
+
+        <div class="illus-subtitle" style="visibility:hidden">placeholder</div>
+      </div>
+
+      <!-- Legend -->
+      <div class="legend-col">
+
+        <!-- Left column: A B C -->
+        <div class="legend-col-left">
+          <div class="legend-item">
+            <div class="legend-letter">A</div>
+            <div class="legend-text">
+              <div class="legend-name">Талия</div>
+              <div class="legend-desc">Обхват по линии талии · ½ значение</div>
+            </div>
+          </div>
+          <div class="legend-item">
+            <div class="legend-letter">B</div>
+            <div class="legend-text">
+              <div class="legend-name">Бёдра</div>
+              <div class="legend-desc">Обхват по линии бёдер · ½ значение</div>
+            </div>
+          </div>
+          <div class="legend-item">
+            <div class="legend-letter">C</div>
+            <div class="legend-text">
+              <div class="legend-name">Низ штанины</div>
+              <div class="legend-desc">Ширина манжеты · ½ значение</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right column: D + tolerance -->
+        <div class="legend-col-right">
+          <div class="legend-item">
+            <div class="legend-letter">D</div>
+            <div class="legend-text">
+              <div class="legend-name">Длина штанины</div>
+              <div class="legend-desc">По внутреннему шву<br>D32 — рост 174–183<br>D34 — рост 183–190</div>
+            </div>
+          </div>
+          <div class="tolerance-note">
+            <div class="tol-icon">⚠</div>
+            <div class="tol-text">Допустимые расхождения: <b>±1 см</b> по основным меркам, <b>±0,5 см</b> по низу штанины</div>
+          </div>
+          <div class="illus-subtitle" style="margin-top:28px;">Производить замеры нужно<br>на своих хорошо выправленных джинсах</div>
+        </div>
+
+      </div>
+
+    </div><!-- /zone-body -->
+
+    <!-- SIZE INDICATOR -->
+    <div class="size-indicator">
+      <div class="si-item">
+        <div class="si-num">XX</div>
+        <div class="si-label">объём</div>
+      </div>
+      <div class="si-slash">/</div>
+      <div class="si-item">
+        <div class="si-num">XX</div>
+        <div class="si-label">длина</div>
+      </div>
+    </div>
+
+    <!-- Г-образные стрелки + рамки поверх таблицы -->
+    <!-- Левая рамка: Размер + A + B + C -->
+    <div style="position:absolute; left:72px; top:1156px; width:1048px; bottom:100px; border:2px solid #e8333a; border-radius:6px; pointer-events:none; z-index:4;"></div>
+    <!-- Правая рамка: D32 + D34 -->
+    <div style="position:absolute; left:1132px; top:1156px; right:72px; bottom:100px; border:2px solid #e8333a; border-radius:6px; pointer-events:none; z-index:4;"></div>
+
+    <!-- ZONE 3: TABLE -->
+    <div class="zone-table">
+      <div class="table-label">Таблица замеров изделия · см</div>
+      <table class="size-table">
+        <thead>
+          <tr>
+            <th class="group-left">Размер<br><span style="font-size:18px;font-weight:500;color:#fff;letter-spacing:0.05em;font-family:'Manrope',sans-serif;">производителя</span></th>
+            <th class="col-letter group-left">A<span class="d-note">Талия × ½</span></th>
+            <th class="col-letter group-left">B<span class="d-note">Бёдра × ½</span></th>
+            <th class="col-letter group-left-end">C<span class="d-note">Низ штан. × ½</span></th>
+            <th class="col-letter group-right">D32<span class="d-note">рост 174–183</span></th>
+            <th class="col-letter group-right-end">D34<span class="d-note">рост 183–190</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="group-left"><span class="size-badge">28</span></td><td class="group-left">41,5</td><td class="group-left">51,5</td><td class="group-left-end">17</td><td class="group-right">82</td><td class="group-right-end">87</td></tr>
+          <tr><td class="group-left"><span class="size-badge">29</span></td><td class="group-left">42,5</td><td class="group-left">52,5</td><td class="group-left-end">17,5</td><td class="group-right">82</td><td class="group-right-end">87</td></tr>
+          <tr><td class="group-left"><span class="size-badge">30</span></td><td class="group-left">43,5</td><td class="group-left">53,5</td><td class="group-left-end">18</td><td class="group-right">82</td><td class="group-right-end">87</td></tr>
+          <tr><td class="group-left"><span class="size-badge">31</span></td><td class="group-left">44,5</td><td class="group-left">54,5</td><td class="group-left-end">18,5</td><td class="group-right">82</td><td class="group-right-end">87</td></tr>
+          <tr><td class="group-left"><span class="size-badge">32</span></td><td class="group-left">45,5</td><td class="group-left">55,5</td><td class="group-left-end">19</td><td class="group-right">82</td><td class="group-right-end">87</td></tr>
+          <tr><td class="group-left"><span class="size-badge">33</span></td><td class="group-left">46,5</td><td class="group-left">56,5</td><td class="group-left-end">19,5</td><td class="group-right">82</td><td class="group-right-end">87</td></tr>
+          <tr><td class="group-left"><span class="size-badge">34</span></td><td class="group-left">47,5</td><td class="group-left">57,5</td><td class="group-left-end">20</td><td class="group-right">82</td><td class="group-right-end">87</td></tr>
+          <tr><td class="group-left"><span class="size-badge">36</span></td><td class="group-left">49,5</td><td class="group-left">59,5</td><td class="group-left-end">21</td><td class="group-right">82</td><td class="group-right-end">87</td></tr>
+          <tr><td class="group-left"><span class="size-badge">38</span></td><td class="group-left">51,5</td><td class="group-left">61,5</td><td class="group-left-end">22</td><td class="group-right">82</td><td class="group-right-end">87</td></tr>
+          <tr><td class="group-left"><span class="size-badge">40</span></td><td class="group-left">53,5</td><td class="group-left">63,5</td><td class="group-left-end">23</td><td class="group-right">82</td><td class="group-right-end">87</td></tr>
+          <tr><td class="group-left"><span class="size-badge">42</span></td><td class="group-left">55,5</td><td class="group-left">65,5</td><td class="group-left-end">24</td><td class="group-right">82</td><td class="group-right-end">87</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="bottom-strip">
+      <span><b>Авторская посадка</b></span>
+      <span class="bdot"></span>
+      <span>Европейское лекало</span>
+      <span class="bdot"></span>
+      <span>Стрейч-деним <b>Cipo &amp; Baxx</b></span>
+    </div>
+
+  </div><!-- /banner -->
+  </div><!-- /shell -->
+  </div><!-- /wrap -->
+</div><!-- /stage -->
+
+<!-- UI OVERLAY — вне баннера -->
+<div class="ui-overlay" id="ui-overlay">
+  <input type="file" id="jeans-file" accept="image/*" style="display:none" onchange="loadJeansPhoto(this)">
+  <div class="upload-row-ui">
+    <button class="upload-btn-ui" onclick="document.getElementById('jeans-file').click()">
+      <span id="ic-jeans">📷</span> Фото джинсов
+    </button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+  function loadExcel(input) {
+    const file = input.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      try {
+        const wb = XLSX.read(e.target.result, { type: 'array' });
+        const ws = wb.Sheets[wb.SheetNames[0]];
+        const rows = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
+
+        // Найти строку с размерами (содержит числа 28-42)
+        let sizeRow = -1, taliaRow = -1, bassenRow = -1, pacaRow = -1, icboyRow = -1;
+        for (let i = 0; i < rows.length; i++) {
+          const r = rows[i];
+          const flat = r.map(c => String(c).trim());
+          if (flat.some(c => c === '28') && flat.some(c => c === '42')) sizeRow = i;
+          if (flat.some(c => c.includes('BEL') || c.includes('бел') || c.includes('Bel'))) taliaRow = i;
+          if (flat.some(c => c.includes('BASEN') || c.includes('басен') || c.includes('Basen'))) bassenRow = i;
+          if (flat.some(c => c.includes('PAÇA') || c.includes('PACA') || c.includes('пача'))) pacaRow = i;
+          if (flat.some(c => c.includes('BOY') || c.includes('boy') || c.includes('бой'))) icboyRow = i;
+        }
+
+        if (sizeRow === -1) { alert('Не найдена строка с размерами 28–42'); return; }
+
+        // Извлечь колонки для размеров 28–46
+        const sizes = [24,25,26,27,28,29,30,31,32,33,34,36,38,40,42,44,46];
+        const sizeRowData = rows[sizeRow];
+        const sizeColMap = {}; // size -> colIndex
+        for (let c = 0; c < sizeRowData.length; c++) {
+          const v = parseFloat(sizeRowData[c]);
+          if (sizes.includes(v)) sizeColMap[v] = c;
+        }
+
+        // Извлечь значения из строк
+        function getVal(rowIdx, size) {
+          if (rowIdx === -1 || !sizeColMap[size]) return '—';
+          const v = rows[rowIdx][sizeColMap[size]];
+          if (v === '' || v === null || v === undefined) return '—';
+          return String(v).replace('.', ',');
+        }
+
+        // D32 и D34 — ищем в строках İÇ BOY
+        let d32 = '82', d34 = '87';
+        if (icboyRow !== -1) {
+          // Ищем строку с 32 и строку с 34
+          for (let i = icboyRow; i <= Math.min(icboyRow + 3, rows.length - 1); i++) {
+            const r = rows[i];
+            const flat = r.map(c => String(c).trim());
+            if (flat.includes('32')) {
+              const idx32 = sizeColMap[32];
+              if (idx32 !== undefined) d32 = String(r[idx32]).replace('.', ',');
+            }
+            if (flat.includes('34')) {
+              const idx32 = sizeColMap[32];
+              if (idx32 !== undefined) d34 = String(r[idx32]).replace('.', ',');
+            }
+          }
+        }
+
+        // Обновить tbody — только размеры которые есть в файле
+        const availableSizes = sizes.filter(s => sizeColMap[s] !== undefined);
+        const tbody = document.querySelector('.size-table tbody');
+        tbody.innerHTML = availableSizes.map(size => {
+          function cell(val) {
+            const missing = val === '—';
+            const style = missing ? ' style="background:rgba(232,51,58,0.18);color:#e8333a;"' : '';
+            return `<td${style}>${missing ? '⚠ нет данных' : val}</td>`;
+          }
+          return `<tr>
+            <td><span class="size-badge">${size}</span></td>
+            ${cell(getVal(taliaRow, size))}
+            ${cell(getVal(bassenRow, size))}
+            ${cell(getVal(pacaRow, size))}
+            ${cell(d32)}
+            ${cell(d34)}
+          </tr>`;
+        }).join('');
+
+        // Подтверждение
+        const btn = document.querySelector('.dl-btn');
+        btn.textContent = '✓ XLS';
+        btn.style.color = '#34c759';
+        setTimeout(() => { btn.textContent = '↑ XLS'; btn.style.color = ''; }, 2000);
+
+      } catch(err) {
+        alert('Ошибка чтения файла: ' + err.message);
+      }
+      input.value = '';
+    };
+    reader.readAsArrayBuffer(file);
+  }
+</script>
+<script>
+  function loadJeansPhoto(input) {
+    const file = input.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const img = document.getElementById('jeans-photo');
+      const placeholder = document.getElementById('illus-placeholder');
+      const btn = document.querySelector('.upload-btn-ui');
+      img.src = e.target.result;
+      img.style.display = 'block';
+      if (placeholder) placeholder.style.display = 'none';
+      btn.textContent = '✓ Фото загружено';
+      btn.classList.add('loaded');
+    };
+    reader.readAsDataURL(file);
+    input.value = '';
+  }
+
+  function scaleBanner() {
+    const shell = document.querySelector('.banner-shell');
+    const wrap  = document.querySelector('.banner-wrap');
+    if (!shell || !wrap) return;
+    const scale = Math.min((document.body.clientWidth - 64) / 1800, (window.innerHeight - 200) / 2400, 1);
+    shell.style.width = '1800px'; shell.style.height = '2400px';
+    shell.style.transform = 'scale(' + scale + ')';
+    shell.style.transformOrigin = 'top left';
+    wrap.style.width  = Math.round(1800 * scale) + 'px';
+    wrap.style.height = Math.round(2400 * scale) + 'px';
+    wrap.style.overflow = 'hidden'; wrap.style.margin = '0 auto';
+  }
+  window.addEventListener('load', scaleBanner);
+  window.addEventListener('resize', scaleBanner);
+  document.fonts && document.fonts.ready.then(scaleBanner);
+  scaleBanner();
+
+  async function downloadPng() {
+    const node = document.getElementById('banner');
+    const shell = document.querySelector('.banner-shell');
+    const wrap  = document.querySelector('.banner-wrap');
+    const prev  = shell.style.cssText;
+    shell.style.cssText = 'width:1800px!important;height:2400px!important;transform:none!important';
+    wrap.style.width = '1800px'; wrap.style.height = '2400px'; wrap.style.overflow = 'visible';
+    document.body.style.overflow = 'visible';
+    await new Promise(r => setTimeout(r, 200));
+    try {
+      const canvas = await html2canvas(node, { width:1800, height:2400, windowWidth:1800, windowHeight:2400, backgroundColor:'#0c0c0c', scale:1, useCORS:true, logging:false, x:0, y:0 });
+      const a = document.createElement('a'); a.href = canvas.toDataURL('image/png'); a.download = 'size-chart.png'; a.click();
+    } catch(e) { alert('Ошибка: ' + e.message); }
+    finally { document.body.style.overflow = ''; shell.style.cssText = prev; scaleBanner(); }
+  }
+  function downloadHtml() {
+    const blob = new Blob(['<!doctype html>\n' + document.documentElement.outerHTML], {type:'text/html;charset=utf-8'});
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'size-chart.html'; a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  }
+</script>
+</body>
+</html>
