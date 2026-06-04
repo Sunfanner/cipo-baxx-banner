@@ -1,0 +1,798 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>90 операций — куртка — баннер 1600×1000</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --panel: #111111;
+    --red: #e8333a;
+    --grid: rgba(255, 255, 255, 0.05);
+    --mark: rgba(255, 255, 255, 0.15);
+    --ink: #ffffff;
+    --mute: rgba(255, 255, 255, 0.45);
+    --mute-2: rgba(255, 255, 255, 0.25);
+  }
+
+  * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+
+  html, body {
+    margin: 0;
+    background: #000;
+    color: var(--ink);
+    font-family: 'Manrope', system-ui, sans-serif;
+    font-feature-settings: "ss01", "cv01";
+  }
+
+  /* workspace — simple centered preview card on grey */
+  html, body { background: #2a2a2a; min-height: 100%; }
+  .stage {
+    min-height: 100vh;
+    background: #2a2a2a;
+    padding: 0;
+  }
+  .workspace {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .workspace .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+  }
+  .workspace .meta .dim { color: rgba(255,255,255,0.55); }
+  .workspace .meta .downloads {
+    display: flex;
+    gap: 8px;
+    flex: 0 0 auto;
+  }
+  .workspace .meta .dl {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 12px 7px 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 2px;
+    transition: background 0.15s, border-color 0.15s, transform 0.1s;
+    cursor: pointer;
+  }
+  .workspace .meta .dl:hover {
+    background: rgba(232,51,58,0.18);
+    border-color: rgba(232,51,58,0.6);
+  }
+  .workspace .meta .dl:active { transform: translateY(1px); }
+  .workspace .meta .dl svg { width: 11px; height: 11px; display: block; }
+  .workspace .meta .dl.primary {
+    background: var(--red);
+    border-color: var(--red);
+    color: #fff;
+  }
+  .workspace .meta .dl.primary:hover {
+    background: #ff424a;
+    border-color: #ff424a;
+  }
+  .scaler {
+    width: 100%;
+    aspect-ratio: 1600 / 1000;
+    position: relative;
+    overflow: hidden;
+    background: var(--bg);
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.04) inset,
+      0 30px 80px rgba(0,0,0,0.55),
+      0 0 0 1px rgba(255,255,255,0.06);
+    border-radius: 2px;
+  }
+  .scaler .banner {
+    transform-origin: top left;
+    /* transform: scale(...) set by JS to match container width */
+  }
+
+  .banner {
+    width: 1600px;
+    height: 1000px;
+    background: var(--bg);
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 760px;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+      "topL  topR"
+      "hero  pattern"
+      "bullets pattern";
+    column-gap: 48px;
+    row-gap: 28px;
+    padding: 44px 56px 40px;
+  }
+
+  /* background grid */
+  .banner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+  }
+  .banner > * { position: relative; z-index: 1; }
+
+  /* corner crosshairs (technical drawing feel) */
+  .banner::after {
+    content: "";
+    position: absolute;
+    inset: 24px;
+    border: 1px solid rgba(255,255,255,0.06);
+    pointer-events: none;
+  }
+
+  /* --- TOP LEFT (eyebrow) --- */
+  .topL { grid-area: topL; display:flex; align-items:flex-start; }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 0.22em;
+    color: var(--red);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 28px; height: 2px; background: var(--red);
+  }
+
+  /* --- TOP RIGHT: brand only --- */
+  .topR { grid-area: topR; display: flex; flex-direction: column; align-items: flex-end; gap: 24px; }
+  .brand {
+    text-align: right;
+    line-height: 1;
+  }
+  .brand .denims {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    color: var(--mute);
+    font-style: italic;
+    margin-bottom: 8px;
+  }
+  .brand .mark {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    font-size: 34px;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+  }
+  .brand .mark .amp { color: var(--red); }
+  .brand .reg {
+    font-size: 14px;
+    vertical-align: super;
+    color: var(--mute);
+  }
+  .brand .tagline {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--mute-2);
+    text-transform: uppercase;
+    margin-top: 10px;
+  }
+
+
+  /* --- HERO --- */
+  .hero { grid-area: hero; display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 8px; }
+  .hero .lead {
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 1.15;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    margin: 0 0 18px;
+  }
+  .hero .lead .n30 { color: var(--ink); }
+  .hero .big {
+    font-weight: 800;
+    font-size: 116px;
+    line-height: 0.88;
+    letter-spacing: -0.045em;
+    margin: 0;
+    color: var(--ink);
+  }
+  .hero .big .row1 {
+    display: block;
+    color: var(--ink);
+  }
+  .hero .big .row2 {
+    display: block;
+    color: var(--red);
+    font-weight: 900;
+    margin-top: 6px;
+  }
+  .hero .big .dash {
+    display: inline-block;
+    width: 0.34em;
+    height: 0.06em;
+    background: var(--ink);
+    vertical-align: 0.34em;
+    margin-left: 0.06em;
+  }
+  .hero .sub {
+    margin: 22px 0 0;
+    font-weight: 500;
+    font-size: 24px;
+    color: var(--mute);
+    letter-spacing: -0.01em;
+  }
+  .hero .rule {
+    width: 80px;
+    height: 3px;
+    background: var(--red);
+    margin: 18px 0 0;
+  }
+
+  /* --- BULLETS (1.5× and single-line) --- */
+  .bullets {
+    grid-area: bullets;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-bottom: 4px;
+  }
+  .bullets .row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    font-weight: 500;
+    font-size: 30px;          /* 1.5× of a 20px base */
+    line-height: 1.1;
+    letter-spacing: -0.005em;
+    white-space: nowrap;
+    color: var(--ink);
+  }
+  .bullets .row .sq {
+    flex: 0 0 auto;
+    width: 18px;
+    height: 18px;
+    background: var(--red);
+  }
+  .bullets .row b {
+    color: var(--red);
+    font-weight: 700;
+    margin-right: 0.25em;
+  }
+
+  /* --- PATTERN PANEL --- */
+  .pattern {
+    grid-area: pattern;
+    background: var(--panel);
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 22px 22px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+  }
+  .pattern .caption {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mute);
+  }
+  .pattern .caption .right { color: var(--red); font-weight: 600; }
+  .pattern .svg-wrap {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    align-items: stretch;
+  }
+  .pattern svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+  }
+  .pattern .svg-wrap { overflow: hidden; }
+  .pattern .legend {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--mute);
+    text-transform: uppercase;
+  }
+  .pattern .legend .item { display: flex; align-items: center; gap: 8px; }
+  .pattern .legend .sw {
+    width: 22px; height: 1px; background: var(--red); opacity: 0.7;
+  }
+  .pattern .legend .sw.dash {
+    background-image: linear-gradient(to right, rgba(255,255,255,0.45) 50%, transparent 50%);
+    background-size: 6px 1px;
+    background-color: transparent;
+    height: 1px;
+  }
+  .pattern .legend .sw.dot {
+    width: 7px; height: 7px; border-radius: 50%; background: var(--red); opacity: 1;
+  }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="workspace">
+    <div class="meta">
+      <span>90 операций <span class="dim">· 1600×1000px</span></span>
+      <span class="downloads">
+        <a class="dl" href="90 operations banner.html" download="90-operations-banner.html" title="Скачать HTML">
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"><path d="M6 1.5v6.5"/><path d="M3 6l3 3 3-3"/><path d="M2 10.5h8"/></svg>
+          HTML
+        </a>
+        <a class="dl primary" href="downloads/90-operations-banner.png" download="90-operations-banner.png" title="Скачать PNG">
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"><path d="M6 1.5v6.5"/><path d="M3 6l3 3 3-3"/><path d="M2 10.5h8"/></svg>
+          PNG
+        </a>
+      </span>
+    </div>
+  <div class="scaler" id="scaler">
+  <div class="banner">
+
+    <!-- TOP LEFT -->
+    <div class="topL">
+      <div class="eyebrow">Production Quality · Spec 03</div>
+    </div>
+
+    <!-- TOP RIGHT: brand + 30→90+ -->
+    <div class="topR">
+      <div class="brand">
+        <div class="denims">denim's</div>
+        <div class="mark">CIPO <span class="amp">&amp;</span> BAXX<span class="reg">®</span></div>
+        <div class="tagline">Made in Türkiye</div>
+      </div>
+
+    </div>
+
+    <!-- HERO -->
+    <div class="hero">
+      <p class="lead">Базовая куртка — <span class="n30">30 операций</span>.</p>
+      <h1 class="big">
+        <span class="row1"><span style="color: rgb(232, 51, 58)">CIPO BAXX </span><span class="dash"></span></span>
+        <span class="row2" style="font-size: 90px"><span style="color: rgb(255, 255, 255)">90+ ОПЕРАЦИЙ.</span></span>
+      </h1>
+      <p class="sub">Разница видна сразу.</p>
+      <div class="rule"></div>
+    </div>
+
+    <!-- BULLETS -->
+    <div class="bullets">
+      <div class="row">
+        <span class="sq" aria-hidden="true"></span>
+        <span><b>Вошинг</b>— 15–20 этапов</span>
+      </div>
+      <div class="row">
+        <span class="sq" aria-hidden="true"></span>
+        <span><b>Декор и фурнитура</b>— вручную</span>
+      </div>
+      <div class="row">
+        <span class="sq" aria-hidden="true"></span>
+        <span><b>Двойная строчка</b>на каждом шве</span>
+      </div>
+    </div>
+
+    <!-- PATTERN INFOGRAPHIC -->
+    <div class="pattern">
+      <div class="caption">
+        <span>Cutting Plan / Лекало · DWG-90-JKT</span>
+        <span class="right">● 90 ops · scale 1:8</span>
+      </div>
+
+      <div class="svg-wrap">
+      <svg viewBox="0 0 720 760" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" aria-label="Tech sketch джинсовой куртки Cipo Baxx">
+        <defs>
+          <pattern id="mmFine" width="8" height="8" patternUnits="userSpaceOnUse">
+            <path d="M 8 0 L 0 0 0 8" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+          </pattern>
+          <pattern id="mmCoarse" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.6"/>
+          </pattern>
+          <marker id="arr" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#e8333a" opacity="0.6"/>
+          </marker>
+        </defs>
+
+        <!-- background + grid -->
+        <rect x="0" y="0" width="720" height="760" fill="#111"/>
+        <rect x="0" y="0" width="720" height="760" fill="url(#mmFine)"/>
+        <rect x="0" y="0" width="720" height="760" fill="url(#mmCoarse)"/>
+        <rect x="10" y="10" width="700" height="740" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.6"/>
+
+        <!-- corner ticks -->
+        <g stroke="rgba(255,255,255,0.25)" stroke-width="0.6">
+          <line x1="10" y1="40" x2="40" y2="40"/><line x1="40" y1="10" x2="40" y2="40"/>
+          <line x1="710" y1="40" x2="680" y2="40"/><line x1="680" y1="10" x2="680" y2="40"/>
+          <line x1="10" y1="720" x2="40" y2="720"/><line x1="40" y1="720" x2="40" y2="750"/>
+          <line x1="710" y1="720" x2="680" y2="720"/><line x1="680" y1="720" x2="680" y2="750"/>
+        </g>
+
+        <!-- title stamp -->
+        <g font-family="JetBrains Mono, monospace" fill="rgba(255,255,255,0.4)" letter-spacing="0.12em">
+          <text x="22" y="28" font-size="9">DWG · 90-OPS · REV.05 · A3</text>
+          <text x="22" y="40" font-size="8" fill="rgba(255,255,255,0.28)">UNIT: mm · SEAM ALLOWANCE: 12</text>
+        </g>
+
+        <!-- ══ LEFT SLEEVE ══ -->
+        <g id="sl-left">
+          <!-- outer seam: RED like jeans -->
+          <path d="M 142 222 Q 110 232 90 262 L 72 320 L 58 400 L 50 490 L 48 568 L 48 608 L 50 638 L 52 662 Q 56 676 72 680 L 112 682 Q 128 678 132 662 L 134 638 L 136 608 L 138 568 L 140 490 L 144 400 L 148 320 L 152 262 Z"
+            fill="none" stroke="#e8333a" stroke-opacity="0.55" stroke-width="1.2"/>
+          <!-- seam allowance: white dashed -->
+          <path d="M 150 234 Q 120 244 102 270 L 84 326 L 70 404 L 62 494 L 60 572 L 60 636 L 62 660 Q 66 672 80 676 L 108 678 Q 122 674 126 660 L 128 636 L 130 572 L 132 494 L 136 404 L 140 326 L 144 270"
+            fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="0.6" stroke-dasharray="4 3"/>
+          <!-- underarm construction line -->
+          <line x1="90" y1="262" x2="52" y2="638" stroke="rgba(255,255,255,0.14)" stroke-width="0.6" stroke-dasharray="4 3"/>
+          <!-- cuff seam: RED -->
+          <line x1="50" y1="638" x2="136" y2="638" stroke="#e8333a" stroke-opacity="0.55" stroke-width="1.1"/>
+          <!-- cuff inner: white dashed -->
+          <line x1="52" y1="648" x2="134" y2="648" stroke="rgba(255,255,255,0.16)" stroke-width="0.6" stroke-dasharray="4 3"/>
+          <!-- grain line -->
+          <g stroke="rgba(255,255,255,0.32)" stroke-width="0.7" fill="none">
+            <line x1="93" y1="330" x2="93" y2="620" stroke-dasharray="6 4"/>
+            <path d="M 87 330 L 99 330 M 87 620 L 99 620"/>
+            <path d="M 93 330 L 89 340 M 93 330 L 97 340"/>
+            <path d="M 93 620 L 89 610 M 93 620 L 97 610"/>
+          </g>
+          <!-- notches: RED -->
+          <g stroke="#e8333a" stroke-opacity="0.6" stroke-width="1.1">
+            <line x1="138" y1="218" x2="146" y2="226"/>
+            <line x1="44"  y1="490" x2="56"  y2="490"/>
+            <line x1="46"  y1="634" x2="46"  y2="646"/>
+            <line x1="138" y1="634" x2="138" y2="646"/>
+          </g>
+          <!-- label -->
+          <text x="28" y="718" font-family="JetBrains Mono, monospace" font-size="9" fill="rgba(255,255,255,0.65)" letter-spacing="0.16em">РУКАВ Л · 03</text>
+          <text x="28" y="730" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(255,255,255,0.35)" letter-spacing="0.12em">×1</text>
+        </g>
+
+        <!-- ══ RIGHT SLEEVE (mirror) ══ -->
+        <g id="sl-right">
+          <path d="M 578 222 Q 610 232 630 262 L 648 320 L 662 400 L 670 490 L 672 568 L 672 608 L 670 638 L 668 662 Q 664 676 648 680 L 608 682 Q 592 678 588 662 L 586 638 L 584 608 L 582 568 L 580 490 L 576 400 L 572 320 L 568 262 Z"
+            fill="none" stroke="#e8333a" stroke-opacity="0.55" stroke-width="1.2"/>
+          <path d="M 570 234 Q 600 244 618 270 L 636 326 L 650 404 L 658 494 L 660 572 L 660 636 L 658 660 Q 654 672 640 676 L 612 678 Q 598 674 594 660 L 592 636 L 590 572 L 588 494 L 584 404 L 580 326 L 576 270"
+            fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="0.6" stroke-dasharray="4 3"/>
+          <line x1="630" y1="262" x2="668" y2="638" stroke="rgba(255,255,255,0.14)" stroke-width="0.6" stroke-dasharray="4 3"/>
+          <line x1="584" y1="638" x2="670" y2="638" stroke="#e8333a" stroke-opacity="0.55" stroke-width="1.1"/>
+          <line x1="586" y1="648" x2="668" y2="648" stroke="rgba(255,255,255,0.16)" stroke-width="0.6" stroke-dasharray="4 3"/>
+          <g stroke="rgba(255,255,255,0.32)" stroke-width="0.7" fill="none">
+            <line x1="627" y1="330" x2="627" y2="620" stroke-dasharray="6 4"/>
+            <path d="M 621 330 L 633 330 M 621 620 L 633 620"/>
+            <path d="M 627 330 L 623 340 M 627 330 L 631 340"/>
+            <path d="M 627 620 L 623 610 M 627 620 L 631 610"/>
+          </g>
+          <g stroke="#e8333a" stroke-opacity="0.6" stroke-width="1.1">
+            <line x1="574" y1="218" x2="582" y2="226"/>
+            <line x1="664" y1="490" x2="676" y2="490"/>
+            <line x1="582" y1="634" x2="582" y2="646"/>
+            <line x1="674" y1="634" x2="674" y2="646"/>
+          </g>
+          <text x="592" y="718" font-family="JetBrains Mono, monospace" font-size="9" fill="rgba(255,255,255,0.65)" letter-spacing="0.16em">РУКАВ П · 04</text>
+          <text x="592" y="730" font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(255,255,255,0.35)" letter-spacing="0.12em">×1</text>
+        </g>
+
+        <!-- ══ JACKET BODY ══ -->
+        <g id="body">
+
+          <!-- main silhouette: RED -->
+          <path d="
+            M 220 130 Q 200 118 166 112
+            Q 148 180 142 222
+            L 152 262 L 150 450 L 150 560 L 150 624 L 150 700
+            L 570 700 L 570 624 L 570 560 L 570 450 L 568 262
+            L 578 222 Q 572 180 554 112
+            Q 520 118 500 130
+            Q 470 100 360 96 Q 250 100 220 130
+            Z"
+            fill="none" stroke="#e8333a" stroke-opacity="0.55" stroke-width="1.2"/>
+
+          <!-- seam allowance inner: white dashed -->
+          <path d="
+            M 228 136 Q 210 126 178 120
+            Q 162 184 156 228
+            L 162 268 L 160 452 L 160 562 L 160 632 L 160 692
+            L 560 692 L 560 632 L 560 562 L 560 452 L 558 268
+            L 564 228 Q 558 184 542 120
+            Q 510 126 492 136
+            Q 464 108 360 104 Q 256 108 228 136
+            Z"
+            fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="0.6" stroke-dasharray="4 3"/>
+
+          <!-- YOKE seam: RED -->
+          <line x1="152" y1="262" x2="568" y2="262" stroke="#e8333a" stroke-opacity="0.55" stroke-width="1.2"/>
+          <!-- yoke topstitch: white dashed -->
+          <line x1="154" y1="252" x2="566" y2="252" stroke="rgba(255,255,255,0.16)" stroke-width="0.6" stroke-dasharray="4 3"/>
+          <line x1="154" y1="272" x2="566" y2="272" stroke="rgba(255,255,255,0.16)" stroke-width="0.6" stroke-dasharray="4 3"/>
+
+          <!-- WAISTBAND seam: RED -->
+          <line x1="152" y1="624" x2="568" y2="624" stroke="#e8333a" stroke-opacity="0.55" stroke-width="1.2"/>
+          <!-- waistband topstitch: white dashed -->
+          <line x1="154" y1="614" x2="566" y2="614" stroke="rgba(255,255,255,0.16)" stroke-width="0.6" stroke-dasharray="4 3"/>
+          <line x1="154" y1="634" x2="566" y2="634" stroke="rgba(255,255,255,0.16)" stroke-width="0.6" stroke-dasharray="4 3"/>
+
+          <!-- PANEL SEAMS vertical: RED -->
+          <line x1="240" y1="262" x2="224" y2="624" stroke="#e8333a" stroke-opacity="0.45" stroke-width="0.9"/>
+          <line x1="480" y1="262" x2="496" y2="624" stroke="#e8333a" stroke-opacity="0.45" stroke-width="0.9"/>
+          <!-- panel seam inner: white dashed -->
+          <line x1="232" y1="262" x2="216" y2="624" stroke="rgba(255,255,255,0.14)" stroke-width="0.6" stroke-dasharray="4 3"/>
+          <line x1="488" y1="262" x2="504" y2="624" stroke="rgba(255,255,255,0.14)" stroke-width="0.6" stroke-dasharray="4 3"/>
+
+          <!-- CENTRE FRONT: white dashed construction -->
+          <line x1="360" y1="130" x2="360" y2="700" stroke="rgba(255,255,255,0.15)" stroke-width="0.6" stroke-dasharray="3 2"/>
+
+          <!-- ARMHOLE seam: RED -->
+          <path d="M 142 222 Q 148 242 152 262" stroke="#e8333a" stroke-opacity="0.55" stroke-width="1.1" fill="none"/>
+          <path d="M 578 222 Q 572 242 568 262" stroke="#e8333a" stroke-opacity="0.55" stroke-width="1.1" fill="none"/>
+          <!-- armhole inner: white dashed -->
+          <path d="M 148 228 Q 154 248 158 268" stroke="rgba(255,255,255,0.16)" stroke-width="0.6" fill="none" stroke-dasharray="4 3"/>
+          <path d="M 572 228 Q 566 248 562 268" stroke="rgba(255,255,255,0.16)" stroke-width="0.6" fill="none" stroke-dasharray="4 3"/>
+
+          <!-- COLLAR: RED -->
+          <path d="M 260 132 Q 310 114 360 112 Q 410 114 460 132"
+            fill="none" stroke="#e8333a" stroke-opacity="0.55" stroke-width="1.2"/>
+          <path d="
+            M 260 132 Q 240 138 234 158 Q 232 174 252 184
+            Q 290 196 320 188 L 360 168
+            L 400 188 Q 430 196 468 184
+            Q 488 174 486 158 Q 480 138 460 132
+            Q 440 118 360 114 Q 280 118 260 132 Z"
+            fill="none" stroke="#e8333a" stroke-opacity="0.55" stroke-width="1.2" stroke-linejoin="round"/>
+          <!-- collar inner: white dashed -->
+          <path d="
+            M 266 138 Q 248 144 242 162 Q 240 176 258 186
+            Q 294 196 322 190 L 360 172 L 398 190
+            Q 426 196 462 186 Q 480 176 478 162 Q 472 144 454 138"
+            fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="0.6" stroke-dasharray="4 3"/>
+          <!-- collar notch lines: white subtle -->
+          <line x1="320" y1="188" x2="342" y2="162" stroke="rgba(255,255,255,0.22)" stroke-width="0.7"/>
+          <line x1="400" y1="188" x2="378" y2="162" stroke="rgba(255,255,255,0.22)" stroke-width="0.7"/>
+
+          <!-- TOP BUTTON (at collar base) -->
+          <circle cx="360" cy="166" r="7.5" fill="none" stroke="#e8333a" stroke-opacity="0.6" stroke-width="1.0"/>
+          <circle cx="360" cy="166" r="2.8" fill="none" stroke="#e8333a" stroke-opacity="0.4" stroke-width="0.8"/>
+          <path d="M 354 160 L 360 172 L 366 160 Z" fill="none" stroke="#e8333a" stroke-opacity="0.35" stroke-width="0.7"/>
+
+          <!-- LEFT CHEST POCKET: RED -->
+          <path d="M 192 280 L 340 280 L 340 370 L 300 396 L 260 396 L 220 396 L 192 370 Z"
+            fill="none" stroke="#e8333a" stroke-opacity="0.55" stroke-width="1.1"/>
+          <!-- pocket inner: white dashed -->
+          <path d="M 198 286 L 334 286 L 334 366 L 298 390 L 260 390 L 222 390 L 198 366 Z"
+            fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="0.6" stroke-dasharray="4 3"/>
+          <!-- V-flap: RED -->
+          <path d="M 192 316 L 260 340 L 340 316" fill="none" stroke="#e8333a" stroke-opacity="0.55" stroke-width="1.1"/>
+          <path d="M 196 322 L 260 344 L 336 322" fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="0.6" stroke-dasharray="4 3"/>
+          <!-- snap button left pocket -->
+          <circle cx="260" cy="302" r="7"   fill="none" stroke="#e8333a" stroke-opacity="0.6" stroke-width="1.0"/>
+          <circle cx="260" cy="302" r="2.5" fill="none" stroke="#e8333a" stroke-opacity="0.4" stroke-width="0.8"/>
+          <path d="M 254 296 L 260 308 L 266 296 Z" fill="none" stroke="#e8333a" stroke-opacity="0.35" stroke-width="0.7"/>
+
+          <!-- RIGHT CHEST POCKET: RED -->
+          <path d="M 380 280 L 528 280 L 528 370 L 498 396 L 460 396 L 420 396 L 380 370 Z"
+            fill="none" stroke="#e8333a" stroke-opacity="0.55" stroke-width="1.1"/>
+          <path d="M 386 286 L 522 286 L 522 366 L 494 390 L 460 390 L 426 390 L 386 366 Z"
+            fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="0.6" stroke-dasharray="4 3"/>
+          <path d="M 380 316 L 460 340 L 528 316" fill="none" stroke="#e8333a" stroke-opacity="0.55" stroke-width="1.1"/>
+          <path d="M 384 322 L 460 344 L 524 322" fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="0.6" stroke-dasharray="4 3"/>
+          <circle cx="460" cy="302" r="7"   fill="none" stroke="#e8333a" stroke-opacity="0.6" stroke-width="1.0"/>
+          <circle cx="460" cy="302" r="2.5" fill="none" stroke="#e8333a" stroke-opacity="0.4" stroke-width="0.8"/>
+          <path d="M 454 296 L 460 308 L 466 296 Z" fill="none" stroke="#e8333a" stroke-opacity="0.35" stroke-width="0.7"/>
+
+          <!-- LEFT WELT POCKET: RED -->
+          <rect x="192" y="490" width="130" height="24" rx="2" fill="none" stroke="#e8333a" stroke-opacity="0.55" stroke-width="1.1"/>
+          <rect x="196" y="494" width="122" height="16" rx="1" fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="0.6" stroke-dasharray="4 3"/>
+          <!-- welt topstitch: white dashed -->
+          <line x1="192" y1="486" x2="322" y2="486" stroke="rgba(255,255,255,0.16)" stroke-width="0.6" stroke-dasharray="4 3"/>
+          <line x1="192" y1="518" x2="322" y2="518" stroke="rgba(255,255,255,0.16)" stroke-width="0.6" stroke-dasharray="4 3"/>
+
+          <!-- RIGHT WELT POCKET: RED -->
+          <rect x="398" y="490" width="130" height="24" rx="2" fill="none" stroke="#e8333a" stroke-opacity="0.55" stroke-width="1.1"/>
+          <rect x="402" y="494" width="122" height="16" rx="1" fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="0.6" stroke-dasharray="4 3"/>
+          <line x1="398" y1="486" x2="528" y2="486" stroke="rgba(255,255,255,0.16)" stroke-width="0.6" stroke-dasharray="4 3"/>
+          <line x1="398" y1="518" x2="528" y2="518" stroke="rgba(255,255,255,0.16)" stroke-width="0.6" stroke-dasharray="4 3"/>
+
+          <!-- BUTTONS x5: RED circles with shank triangle -->
+          <g fill="none" stroke="#e8333a" stroke-opacity="0.6" stroke-width="1.0">
+            <circle cx="360" cy="280" r="7.5"/><circle cx="360" cy="390" r="7.5"/>
+            <circle cx="360" cy="500" r="7.5"/><circle cx="360" cy="590" r="7.5"/>
+            <circle cx="360" cy="660" r="7.5"/>
+          </g>
+          <g fill="none" stroke="#e8333a" stroke-opacity="0.38" stroke-width="0.8">
+            <circle cx="360" cy="280" r="2.8"/><circle cx="360" cy="390" r="2.8"/>
+            <circle cx="360" cy="500" r="2.8"/><circle cx="360" cy="590" r="2.8"/>
+            <circle cx="360" cy="660" r="2.8"/>
+          </g>
+          <g fill="none" stroke="#e8333a" stroke-opacity="0.30" stroke-width="0.7">
+            <path d="M 354 274 L 360 284 L 366 274 Z"/>
+            <path d="M 354 384 L 360 394 L 366 384 Z"/>
+            <path d="M 354 494 L 360 504 L 366 494 Z"/>
+            <path d="M 354 584 L 360 594 L 366 584 Z"/>
+            <path d="M 354 654 L 360 664 L 366 654 Z"/>
+          </g>
+
+          <!-- GRAIN LINE body -->
+          <g stroke="rgba(255,255,255,0.32)" stroke-width="0.7" fill="none">
+            <line x1="360" y1="400" x2="360" y2="610" stroke-dasharray="6 4"/>
+            <path d="M 354 400 L 366 400 M 354 610 L 366 610"/>
+            <path d="M 360 400 L 356 410 M 360 400 L 364 410"/>
+            <path d="M 360 610 L 356 600 M 360 610 L 364 600"/>
+          </g>
+
+          <!-- NOTCHES: RED -->
+          <g stroke="#e8333a" stroke-opacity="0.65" stroke-width="1.1">
+            <line x1="256" y1="128" x2="256" y2="138"/>
+            <line x1="464" y1="128" x2="464" y2="138"/>
+            <line x1="146" y1="258" x2="158" y2="258"/>
+            <line x1="562" y1="258" x2="574" y2="258"/>
+            <line x1="236" y1="258" x2="236" y2="270"/>
+            <line x1="484" y1="258" x2="484" y2="270"/>
+            <line x1="146" y1="622" x2="158" y2="622"/>
+            <line x1="562" y1="622" x2="574" y2="622"/>
+            <line x1="358" y1="694" x2="358" y2="706"/>
+          </g>
+
+          <!-- DIMENSION LINES: RED -->
+          <g stroke="#e8333a" stroke-opacity="0.45" stroke-width="0.7" fill="none">
+            <line x1="152" y1="56" x2="568" y2="56" marker-start="url(#arr)" marker-end="url(#arr)"/>
+          </g>
+          <text x="360" y="50" font-family="JetBrains Mono, monospace" font-size="10" fill="rgba(232,51,58,0.7)" text-anchor="middle" letter-spacing="0.1em">1100</text>
+
+          <g stroke="#e8333a" stroke-opacity="0.45" stroke-width="0.7" fill="none">
+            <line x1="610" y1="112" x2="610" y2="700" marker-start="url(#arr)" marker-end="url(#arr)"/>
+          </g>
+          <text x="618" y="410" font-family="JetBrains Mono, monospace" font-size="10" fill="rgba(232,51,58,0.7)" text-anchor="middle" letter-spacing="0.1em" transform="rotate(90 618 410)">750</text>
+
+          <g stroke="#e8333a" stroke-opacity="0.40" stroke-width="0.7" fill="none">
+            <line x1="26" y1="222" x2="26" y2="680" marker-start="url(#arr)" marker-end="url(#arr)"/>
+          </g>
+          <text x="18" y="454" font-family="JetBrains Mono, monospace" font-size="9" fill="rgba(232,51,58,0.6)" text-anchor="middle" letter-spacing="0.1em" transform="rotate(-90 18 454)">620</text>
+
+          <!-- label -->
+          <text x="163" y="718" font-family="JetBrains Mono, monospace" font-size="10" fill="rgba(255,255,255,0.78)" letter-spacing="0.18em">ПЕРЕДНЯЯ ПОЛОЧКА · 01</text>
+          <text x="163" y="732" font-family="JetBrains Mono, monospace" font-size="9"  fill="rgba(255,255,255,0.4)" letter-spacing="0.14em">×2 · РУКАВ 03/04 ×2</text>
+        </g>
+
+        <!-- ══ 90 OPERATION DOTS: RED ══ -->
+        <g fill="#e8333a">
+          <!-- COLLAR (8) -->
+          <circle cx="290" cy="136" r="2.5"/><circle cx="330" cy="122" r="2.5"/>
+          <circle cx="360" cy="118" r="2.5"/><circle cx="390" cy="122" r="2.5"/>
+          <circle cx="430" cy="136" r="2.5"/><circle cx="278" cy="170" r="2.5"/>
+          <circle cx="360" cy="180" r="2.5"/><circle cx="442" cy="170" r="2.5"/>
+
+          <!-- LEFT CHEST POCKET (10) -->
+          <circle cx="196" cy="284" r="2.5"/><circle cx="240" cy="282" r="2.5"/>
+          <circle cx="296" cy="282" r="2.5"/><circle cx="338" cy="284" r="2.5"/>
+          <circle cx="196" cy="366" r="2.5"/><circle cx="338" cy="366" r="2.5"/>
+          <circle cx="208" cy="320" r="2.5"/><circle cx="312" cy="320" r="2.5"/>
+          <circle cx="260" cy="344" r="2.5"/><circle cx="260" cy="390" r="2.5"/>
+
+          <!-- RIGHT CHEST POCKET (10) -->
+          <circle cx="384" cy="284" r="2.5"/><circle cx="422" cy="282" r="2.5"/>
+          <circle cx="500" cy="282" r="2.5"/><circle cx="524" cy="284" r="2.5"/>
+          <circle cx="384" cy="366" r="2.5"/><circle cx="524" cy="366" r="2.5"/>
+          <circle cx="398" cy="320" r="2.5"/><circle cx="512" cy="320" r="2.5"/>
+          <circle cx="460" cy="344" r="2.5"/><circle cx="460" cy="390" r="2.5"/>
+
+          <!-- YOKE seam (8) -->
+          <circle cx="164" cy="262" r="2.5"/><circle cx="220" cy="258" r="2.5"/>
+          <circle cx="290" cy="256" r="2.5"/><circle cx="360" cy="256" r="2.5"/>
+          <circle cx="430" cy="256" r="2.5"/><circle cx="500" cy="258" r="2.5"/>
+          <circle cx="556" cy="262" r="2.5"/><circle cx="360" cy="272" r="2.5"/>
+
+          <!-- LEFT WELT POCKET (6) -->
+          <circle cx="196" cy="490" r="2.5"/><circle cx="240" cy="490" r="2.5"/>
+          <circle cx="318" cy="490" r="2.5"/><circle cx="196" cy="514" r="2.5"/>
+          <circle cx="256" cy="514" r="2.5"/><circle cx="318" cy="514" r="2.5"/>
+
+          <!-- RIGHT WELT POCKET (6) -->
+          <circle cx="402" cy="490" r="2.5"/><circle cx="460" cy="490" r="2.5"/>
+          <circle cx="524" cy="490" r="2.5"/><circle cx="402" cy="514" r="2.5"/>
+          <circle cx="460" cy="514" r="2.5"/><circle cx="524" cy="514" r="2.5"/>
+
+          <!-- WAISTBAND (6) -->
+          <circle cx="164" cy="624" r="2.5"/><circle cx="256" cy="620" r="2.5"/>
+          <circle cx="360" cy="620" r="2.5"/><circle cx="464" cy="620" r="2.5"/>
+          <circle cx="556" cy="624" r="2.5"/><circle cx="360" cy="634" r="2.5"/>
+
+          <!-- BODY SIDE SEAMS (8) -->
+          <circle cx="154" cy="340" r="2.5"/><circle cx="152" cy="440" r="2.5"/>
+          <circle cx="152" cy="530" r="2.5"/><circle cx="240" cy="440" r="2.5"/>
+          <circle cx="566" cy="340" r="2.5"/><circle cx="568" cy="440" r="2.5"/>
+          <circle cx="568" cy="530" r="2.5"/><circle cx="480" cy="440" r="2.5"/>
+
+          <!-- ARMHOLE (6) -->
+          <circle cx="144" cy="228" r="2.5"/><circle cx="146" cy="244" r="2.5"/>
+          <circle cx="576" cy="228" r="2.5"/><circle cx="570" cy="260" r="2.5"/>
+
+          <!-- LEFT SLEEVE (11) -->
+          <circle cx="80"  cy="292" r="2.5"/><circle cx="66"  cy="372" r="2.5"/>
+          <circle cx="56"  cy="452" r="2.5"/><circle cx="50"  cy="530" r="2.5"/>
+          <circle cx="140" cy="292" r="2.5"/><circle cx="144" cy="372" r="2.5"/>
+          <circle cx="140" cy="452" r="2.5"/><circle cx="136" cy="530" r="2.5"/>
+          <circle cx="62"  cy="642" r="2.5"/><circle cx="93"  cy="648" r="2.5"/>
+          <circle cx="124" cy="642" r="2.5"/>
+
+          <!-- RIGHT SLEEVE (11) -->
+          <circle cx="640" cy="292" r="2.5"/><circle cx="654" cy="372" r="2.5"/>
+          <circle cx="664" cy="452" r="2.5"/><circle cx="670" cy="530" r="2.5"/>
+          <circle cx="580" cy="292" r="2.5"/><circle cx="576" cy="372" r="2.5"/>
+          <circle cx="580" cy="452" r="2.5"/><circle cx="584" cy="530" r="2.5"/>
+          <circle cx="598" cy="642" r="2.5"/><circle cx="627" cy="648" r="2.5"/>
+          <circle cx="658" cy="642" r="2.5"/>
+        </g>
+
+        <!-- bottom stamp -->
+        <g font-family="JetBrains Mono, monospace" letter-spacing="0.14em">
+          <text x="22"  y="752" font-size="9" fill="rgba(255,255,255,0.4)">● = 1 OPERATION</text>
+          <text x="200" y="752" font-size="9" fill="rgba(255,255,255,0.4)">TOTAL: 90 / 90</text>
+          <text x="380" y="752" font-size="9" fill="rgba(232,51,58,0.7)">SEAM ALLOWANCE 12mm</text>
+          <text x="698" y="752" font-size="9" fill="rgba(255,255,255,0.35)" text-anchor="end">04.06.2026</text>
+        </g>
+      </svg>
+      </div>
+
+      <div class="legend">
+        <div class="item"><span class="sw"></span>линия кроя</div>
+        <div class="item"><span class="sw dash"></span>разметка / припуск</div>
+        <div class="item"><span class="sw dot"></span>операция</div>
+      </div>
+    </div>
+    </div>
+
+  </div><!-- /.banner -->
+  </div><!-- /.scaler -->
+  </div><!-- /.workspace -->
+</div><!-- /.stage -->
+<script>
+  // Scale the 1600×1000 banner to match its preview-card width.
+  (function () {
+    const scaler = document.querySelector('.scaler');
+    const banner = document.querySelector('.scaler .banner');
+    if (!scaler || !banner) return;
+    function fit() {
+      const w = scaler.clientWidth;
+      const s = w / 1600;
+      banner.style.transform = 'scale(' + s + ')';
+      banner.style.transformOrigin = 'top left';
+    }
+    window.addEventListener('resize', fit);
+    fit();
+  })();
+</script>
+</body>
+</html>
