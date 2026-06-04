@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Таблица размеров — Cipo & Baxx · Футболки</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#0c0c0c; --fg:#ffffff; --red:#e8333a; --muted:#6a6a6a; --dim:#1e1e1e; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html,body { background:#ededeb; font-family:"Manrope",sans-serif; min-height:100vh; padding:48px 32px 96px; display:flex; flex-direction:column; align-items:center; }
+
+  .preview-chrome { width:100%; max-width:900px; display:flex; align-items:center; justify-content:space-between; margin-bottom:22px; }
+  .crumbs { display:flex; align-items:center; gap:14px; font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#6a6a6a; }
+  .crumbs .dot { width:6px; height:6px; background:#e8333a; border-radius:50%; }
+  .crumbs b { color:#1a1a1a; font-weight:700; }
+  .actions { display:flex; gap:10px; }
+  .dl-btn { appearance:none; border:1px solid #d0d0ce; background:#fff; cursor:pointer; font-family:"Manrope",sans-serif; font-weight:700; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:#1a1a1a; padding:8px 18px; border-radius:4px; transition:background .15s,color .15s; }
+  .dl-btn:hover { background:#1a1a1a; color:#fff; border-color:#1a1a1a; }
+  .dl-btn-xls { background:#1a1a1a; color:#888; border-color:#2a2a2a; }
+  .dl-btn-xls:hover { background:#252525; border-color:#e8333a; color:#fff; }
+
+  .stage { width:100%; max-width:900px; background:#fff; border-radius:6px; padding:26px; box-shadow:0 30px 60px -20px rgba(0,0,0,0.18); }
+  .stage-head { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:16px; font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#9a9a9a; }
+  .stage-head .red { color:#e8333a; }
+  .banner-wrap { display:block; margin:0 auto; overflow:hidden; }
+  .banner-shell { transform-origin:top left; }
+
+  /* BANNER */
+  .banner { width:1800px; height:2400px; background:var(--bg); color:var(--fg); position:relative; font-family:"Manrope",sans-serif; overflow:hidden; }
+  .grid-bg { position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,0.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.018) 1px,transparent 1px); background-size:60px 60px; pointer-events:none; }
+  .left-bar { position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--red); z-index:5; }
+  .bottom-bar { position:absolute; left:0; right:0; bottom:0; height:3px; background:var(--red); opacity:0.5; z-index:5; }
+  .crop { position:absolute; width:20px; height:20px; border-color:rgba(255,255,255,0.15); border-style:solid; z-index:6; }
+  .crop.tl { top:26px; left:26px; border-width:1px 0 0 1px; }
+  .crop.tr { top:26px; right:26px; border-width:1px 1px 0 0; }
+  .crop.bl { bottom:26px; left:26px; border-width:0 0 1px 1px; }
+  .crop.br { bottom:26px; right:26px; border-width:0 1px 1px 0; }
+
+  .top-label { position:absolute; top:64px; left:72px; font-family:"JetBrains Mono",monospace; font-size:18px; letter-spacing:0.22em; text-transform:uppercase; color:#fff; display:flex; align-items:center; gap:18px; z-index:6; }
+  .top-label::before { content:""; display:inline-block; width:44px; height:2px; background:var(--red); }
+  .top-label .spec { color:var(--muted); margin-left:6px; }
+
+  .logo { position:absolute; top:52px; right:72px; text-align:right; line-height:1; z-index:6; }
+  .logo .denims { font-style:italic; font-weight:500; font-size:22px; color:var(--muted); letter-spacing:0.02em; margin-bottom:8px; }
+  .logo .cipo { font-weight:800; font-size:48px; color:#fff; margin-bottom:4px; }
+  .logo .cipo .amp { color:var(--red); }
+  .logo .baxx { font-weight:900; font-size:48px; color:#fff; }
+  .logo .baxx sup { font-size:20px; font-weight:600; vertical-align:top; }
+
+  /* ZONE 1: HEADER */
+  .zone-header { position:absolute; left:72px; right:72px; top:128px; height:220px; }
+  .banner-title .t1 { font-weight:900; font-size:88px; line-height:0.9; letter-spacing:-0.03em; color:#fff; text-transform:uppercase; display:block; }
+  .banner-title .t2 { font-weight:900; font-size:88px; line-height:0.9; letter-spacing:-0.03em; color:var(--red); text-transform:uppercase; display:block; }
+  .title-divider { height:3px; width:100px; background:var(--red); margin-top:22px; }
+
+  /* ZONE 2: ILLUSTRATION + LEGEND */
+  .zone-body { position:absolute; left:72px; right:72px; top:248px; height:960px; display:flex; gap:60px; align-items:stretch; }
+
+  .illus-col { width:520px; flex-shrink:0; display:flex; flex-direction:column; justify-content:center; }
+  .illus-photo-wrap { position:relative; width:100%; aspect-ratio:480/700; background:#0a0a0a; overflow:visible; }
+  .illus-photo-wrap #tshirt-photo { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center; display:block; clip-path:inset(0); }
+  .illus-placeholder { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; border:1px dashed #2a2a2a; }
+
+  .ui-overlay { width:100%; max-width:900px; margin-top:20px; display:flex; justify-content:center; }
+  .upload-row-ui { display:flex; gap:16px; }
+  .upload-btn-ui { appearance:none; background:#1a1a1a; border:1px solid #2a2a2a; color:#888; font-family:"Manrope",sans-serif; font-size:16px; font-weight:600; padding:14px 32px; border-radius:6px; cursor:pointer; transition:background .15s,color .15s,border-color .15s; letter-spacing:0.02em; }
+  .upload-btn-ui:hover { background:#252525; border-color:#e8333a; color:#fff; }
+  .upload-btn-ui.loaded { border-color:#34c759; color:#34c759; }
+
+  /* Legend — только A и B, два пункта в один столбец */
+  .legend-col { flex:1; display:flex; flex-direction:column; justify-content:center; gap:0; }
+  .legend-item { display:flex; align-items:flex-start; gap:28px; padding:34px 0; border-bottom:1px solid #1e1e1e; }
+  .legend-item:first-child { border-top:1px solid #1e1e1e; }
+  .legend-letter { font-weight:900; font-size:64px; line-height:1; color:var(--red); font-family:"JetBrains Mono",monospace; flex-shrink:0; width:64px; }
+  .legend-text { display:flex; flex-direction:column; gap:8px; padding-top:8px; }
+  .legend-name { font-weight:800; font-size:32px; color:#fff; letter-spacing:0.04em; text-transform:uppercase; }
+  .legend-desc { font-size:22px; font-weight:500; color:#555; line-height:1.35; }
+
+  .tolerance-note { margin-top:36px; display:flex; align-items:flex-start; gap:16px; padding:24px 28px; background:#111; border-left:3px solid var(--red); border-radius:4px; }
+  .tolerance-note .tol-icon { color:var(--red); font-size:24px; flex-shrink:0; margin-top:2px; }
+  .tolerance-note .tol-text { font-size:21px; font-weight:500; color:#666; line-height:1.45; }
+  .tolerance-note .tol-text b { color:#999; font-weight:700; }
+  .illus-subtitle { margin-top:26px; font-size:22px; font-weight:500; color:#444; line-height:1.4; }
+
+  /* ZONE 3: TABLE — центрируем содержимое */
+  .zone-table { position:absolute; left:72px; right:72px; top:1368px; bottom:100px; display:flex; flex-direction:column; align-items:center; }
+  .zone-table::before { content:""; position:absolute; top:-28px; left:0; right:0; height:1px; background:var(--dim); }
+
+  .table-label { font-family:"JetBrains Mono",monospace; font-size:16px; letter-spacing:0.22em; text-transform:uppercase; color:var(--muted); margin-bottom:36px; display:flex; align-items:center; gap:16px; align-self:flex-start; }
+  .table-label::before { content:""; display:inline-block; width:32px; height:2px; background:var(--red); }
+
+  /* Таблица фиксированной ширины, по центру */
+  .table-center-wrap { width:900px; }
+
+  .size-table { width:100%; border-collapse:collapse; font-family:"Manrope",sans-serif; }
+  .size-table thead tr { background:#111; }
+  .size-table thead th { padding:28px 20px; font-size:20px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); text-align:center; border-bottom:2px solid var(--dim); }
+  .size-table thead th:first-child { font-family:"JetBrains Mono",monospace; font-size:22px; letter-spacing:0.14em; color:#fff; font-weight:700; }
+  .size-table thead th.col-letter { color:var(--red); font-size:48px; font-weight:900; font-family:"JetBrains Mono",monospace; line-height:1; padding-bottom:10px; }
+  .size-table thead th.col-letter .d-note { font-size:17px; font-weight:500; color:#fff; display:block; margin-top:8px; letter-spacing:0.04em; font-family:"Manrope",sans-serif; }
+
+  .size-table tbody tr:nth-child(even) { background:#0f0f0f; }
+  .size-table tbody tr { border-bottom:1px solid #161616; }
+  .size-table tbody td { padding:22px 20px; font-size:36px; font-weight:600; color:#ccc; text-align:center; }
+  .size-badge { display:inline-flex; align-items:center; justify-content:center; min-width:90px; height:56px; font-family:"JetBrains Mono",monospace; font-size:40px; font-weight:900; color:var(--red); letter-spacing:0.01em; }
+
+  /* Bottom strip */
+  .bottom-strip { position:absolute; bottom:28px; left:72px; right:72px; display:flex; align-items:center; justify-content:center; gap:36px; font-family:"JetBrains Mono",monospace; font-size:17px; letter-spacing:0.16em; text-transform:uppercase; color:#333; }
+  .bottom-strip b { color:#555; font-weight:700; }
+  .bottom-strip .bdot { width:5px; height:5px; background:var(--red); border-radius:50%; opacity:0.6; }
+</style>
+</head>
+<body>
+
+<div class="preview-chrome">
+  <div class="crumbs">
+    <span class="dot"></span>
+    <span>CIPO &amp; BAXX · PRODUCT</span>
+    <span>/</span>
+    <b>SIZE CHART — T-SHIRT</b>
+    <span>/</span>
+    <span>1800 × 2400</span>
+  </div>
+  <div class="actions">
+    <button class="dl-btn dl-btn-xls" onclick="document.getElementById('xls-input').click()">↑ XLS</button>
+    <input type="file" id="xls-input" accept=".xls,.xlsx" style="display:none" onchange="loadExcel(this)">
+    <button class="dl-btn" onclick="downloadPng()">↓ PNG</button>
+    <button class="dl-btn" onclick="downloadHtml()">↓ HTML</button>
+  </div>
+</div>
+
+<div class="stage">
+  <div class="stage-head">
+    <div><b>BANNER · ТАБЛИЦА РАЗМЕРОВ</b> · Футболки · Превью</div>
+    <div><span class="red">●</span> 1800×2400 · 3:4</div>
+  </div>
+  <div class="banner-wrap">
+  <div class="banner-shell">
+  <div class="banner" id="banner">
+
+    <div class="grid-bg"></div>
+    <div class="left-bar"></div>
+    <div class="bottom-bar"></div>
+    <div class="crop tl"></div><div class="crop tr"></div>
+    <div class="crop bl"></div><div class="crop br"></div>
+
+    <div class="top-label"><span>SIZE GUIDE</span><span class="spec">· T-SHIRT CONFIGURATOR</span></div>
+
+    <div class="logo">
+      <div class="denims">denim's</div>
+      <div class="cipo">CIPO <span class="amp">&amp;</span></div>
+      <div class="baxx">BAXX<sup>®</sup></div>
+    </div>
+
+    <!-- ZONE 1: HEADER -->
+    <div class="zone-header">
+      <div class="banner-title">
+        <span class="t1">ВЫБИРАЙТЕ</span>
+        <span class="t2">РАЗМЕР ПРАВИЛЬНО</span>
+      </div>
+      <div class="title-divider"></div>
+    </div>
+
+    <!-- ZONE 2: ILLUSTRATION + LEGEND -->
+    <div class="zone-body">
+
+      <div class="illus-col">
+        <div class="illus-photo-wrap" id="illus-wrap">
+          <img id="tshirt-photo" src="" alt="" style="display:none; width:100%; height:100%; object-fit:contain; object-position:center; position:absolute; inset:0;">
+          <div class="illus-placeholder" id="illus-placeholder">
+            <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg" opacity="0.14" width="110">
+              <path d="M60 22 Q100 10 140 22 L178 58 L150 68 L150 218 L50 218 L50 68 L22 58 Z" fill="#333"/>
+              <path d="M60 22 Q78 44 100 44 Q122 44 140 22" fill="none" stroke="#555" stroke-width="2"/>
+            </svg>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#2a2a2a;letter-spacing:0.1em;margin-top:14px;">ЗАГРУЗИТЕ ФОТО</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Legend — только A и B -->
+      <div class="legend-col">
+        <div class="legend-item">
+          <div class="legend-letter">A</div>
+          <div class="legend-text">
+            <div class="legend-name">Длина изделия</div>
+            <div class="legend-desc">От плечевого шва до низа</div>
+          </div>
+        </div>
+        <div class="legend-item">
+          <div class="legend-letter">B</div>
+          <div class="legend-text">
+            <div class="legend-name">Обхват груди</div>
+            <div class="legend-desc">По линии груди · ½ значение</div>
+          </div>
+        </div>
+        <div class="tolerance-note">
+          <div class="tol-icon">⚠</div>
+          <div class="tol-text">Допустимые расхождения: <b>±1 см</b> по всем меркам</div>
+        </div>
+        <div class="illus-subtitle">Замеры производить<br>на ровно разложенном изделии</div>
+      </div>
+
+    </div><!-- /zone-body -->
+
+    <!-- SVG-оверлей замеров — прямой дочерний элемент баннера, не обрезается -->
+    <svg id="measure-overlay"
+         style="position:absolute; left:72px; top:349px; width:520px; height:820px; pointer-events:none; z-index:10; overflow:visible;"
+         viewBox="0 0 480 700" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+
+      <!-- B — ОБХВАТ ГРУДИ -->
+      <line x1="90" y1="275" x2="390" y2="275" stroke="#e8333a" stroke-width="3.5"/>
+      <line x1="90" y1="262" x2="90" y2="288" stroke="#e8333a" stroke-width="2.5"/>
+      <line x1="390" y1="262" x2="390" y2="288" stroke="#e8333a" stroke-width="2.5"/>
+      <circle cx="20" cy="275" r="20" fill="#e8333a"/>
+      <text x="20" y="283" text-anchor="middle" fill="#fff" font-family="JetBrains Mono" font-weight="700" font-size="22">B</text>
+
+      <!-- A — ДЛИНА ИЗДЕЛИЯ -->
+      <line x1="140" y1="73" x2="140" y2="612" stroke="#e8333a" stroke-width="3.5"/>
+      <line x1="127" y1="73"  x2="153" y2="73"  stroke="#e8333a" stroke-width="2.5"/>
+      <line x1="127" y1="612" x2="153" y2="612" stroke="#e8333a" stroke-width="2.5"/>
+      <circle cx="116" cy="648" r="20" fill="#e8333a"/>
+      <text x="116" y="656" text-anchor="middle" fill="#fff" font-family="JetBrains Mono" font-weight="700" font-size="22">A</text>
+
+    </svg>
+
+    <!-- ZONE 3: TABLE — по центру, без рамок -->
+    <div class="zone-table">
+      <div class="table-label">Таблица замеров изделия · см</div>
+      <div class="table-center-wrap">
+        <table class="size-table">
+          <thead>
+            <tr>
+              <th>Размер</th>
+              <th class="col-letter">A<span class="d-note">Длина изделия</span></th>
+              <th class="col-letter">B<span class="d-note">Грудь × ½</span></th>
+            </tr>
+          </thead>
+          <tbody id="size-tbody">
+            <tr><td><span class="size-badge">S</span></td>  <td>69</td><td>50</td></tr>
+            <tr><td><span class="size-badge">M</span></td>  <td>71</td><td>52</td></tr>
+            <tr><td><span class="size-badge">L</span></td>  <td>72</td><td>55</td></tr>
+            <tr><td><span class="size-badge">XL</span></td> <td>74</td><td>59</td></tr>
+            <tr><td><span class="size-badge">XXL</span></td><td>75</td><td>62</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="bottom-strip">
+      <span><b>Премиум состав</b></span>
+      <span class="bdot"></span>
+      <span>Европейское лекало</span>
+      <span class="bdot"></span>
+      <span>Премиум качество <b>Cipo &amp; Baxx</b></span>
+    </div>
+
+  </div><!-- /banner -->
+  </div><!-- /shell -->
+  </div><!-- /wrap -->
+</div><!-- /stage -->
+
+<!-- UI OVERLAY — вне баннера -->
+<div class="ui-overlay">
+  <input type="file" id="tshirt-file" accept="image/*" style="display:none" onchange="loadTshirtPhoto(this)">
+  <div class="upload-row-ui">
+    <button class="upload-btn-ui" onclick="document.getElementById('tshirt-file').click()">📷 Фото футболки</button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+/* ===== XLS PARSER — только первый лист, A=LENGHT, B=CHEST ===== */
+function loadExcel(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const wb = XLSX.read(e.target.result, { type:'array' });
+      // Только первый лист
+      const ws = wb.Sheets[wb.SheetNames[0]];
+      const rows = XLSX.utils.sheet_to_json(ws, { header:1, defval:'' });
+
+      const ALL_SIZES = ['XS','S','M','L','XL','XXL','2XL','3XL','4XL','5XL'];
+
+      // Найти строку-заголовок размеров
+      let sizeRow = -1;
+      for (let i = 0; i < rows.length; i++) {
+        const flat = rows[i].map(c => String(c).trim().toUpperCase());
+        if (flat.filter(c => ALL_SIZES.includes(c)).length >= 2) { sizeRow = i; break; }
+      }
+      if (sizeRow === -1) { alert('Не найдена строка с размерами (S/M/L/XL...)'); return; }
+
+      const sizeRowData = rows[sizeRow].map(c => String(c).trim().toUpperCase());
+      const colMap = {};
+      sizeRowData.forEach((v, idx) => { if (ALL_SIZES.includes(v)) colMap[v] = idx; });
+      const available = ALL_SIZES.filter(s => colMap[s] !== undefined);
+
+      // A = длина изделия (LENGHT / LENGTH / UZUNLUK / BOY)
+      // B = обхват груди  (CHEST / BUST / GÖĞÜS / GOGUS)
+      const KW_A = ['LENGHT','LENGTH','UZUNLUK','BOY','ДЛИНА','OMUZDAN'];
+      const KW_B = ['CHEST','BUST','GÖĞÜS','GOGUS','GÖGÜS','ГРУДЬ'];
+
+      function findRow(kwArr) {
+        for (let i = 0; i < rows.length; i++) {
+          if (i === sizeRow) continue;
+          const flat = rows[i].map(c => String(c).toUpperCase()).join('\t');
+          if (kwArr.some(k => flat.includes(k))) return i;
+        }
+        return -1;
+      }
+
+      const rowA = findRow(KW_A);
+      const rowB = findRow(KW_B);
+
+      function getVal(rowIdx, size) {
+        if (rowIdx === -1 || colMap[size] === undefined) return '—';
+        const v = rows[rowIdx][colMap[size]];
+        if (v === '' || v === null || v === undefined) return '—';
+        return String(v).replace('.', ',');
+      }
+
+      function cell(val) {
+        return val === '—'
+          ? '<td style="color:#333;">—</td>'
+          : '<td>' + val + '</td>';
+      }
+
+      document.getElementById('size-tbody').innerHTML = available.map(size =>
+        `<tr><td><span class="size-badge">${size}</span></td>${cell(getVal(rowA,size))}${cell(getVal(rowB,size))}</tr>`
+      ).join('');
+
+      const btns = document.querySelectorAll('.dl-btn-xls');
+      btns.forEach(b => { b.textContent = '✓ XLS'; b.style.color = '#34c759'; });
+      setTimeout(() => btns.forEach(b => { b.textContent = '↑ XLS'; b.style.color = ''; }), 2500);
+
+    } catch(err) { alert('Ошибка: ' + err.message); }
+    input.value = '';
+  };
+  reader.readAsArrayBuffer(file);
+}
+
+/* ===== PHOTO ===== */
+function loadTshirtPhoto(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const img = document.getElementById('tshirt-photo');
+    img.src = e.target.result;
+    img.style.display = 'block';
+    const ph = document.getElementById('illus-placeholder');
+    if (ph) ph.style.display = 'none';
+    const btn = document.querySelector('.upload-btn-ui');
+    btn.textContent = '✓ Фото загружено';
+    btn.classList.add('loaded');
+  };
+  reader.readAsDataURL(file);
+  input.value = '';
+}
+
+/* ===== SCALE ===== */
+function scaleBanner() {
+  const shell = document.querySelector('.banner-shell');
+  const wrap  = document.querySelector('.banner-wrap');
+  if (!shell || !wrap) return;
+  const scale = Math.min((document.body.clientWidth - 64) / 1800, (window.innerHeight - 200) / 2400, 1);
+  shell.style.width = '1800px'; shell.style.height = '2400px';
+  shell.style.transform = 'scale(' + scale + ')';
+  shell.style.transformOrigin = 'top left';
+  wrap.style.width  = Math.round(1800 * scale) + 'px';
+  wrap.style.height = Math.round(2400 * scale) + 'px';
+  wrap.style.overflow = 'hidden'; wrap.style.margin = '0 auto';
+}
+window.addEventListener('load', scaleBanner);
+window.addEventListener('resize', scaleBanner);
+document.fonts && document.fonts.ready.then(scaleBanner);
+scaleBanner();
+
+/* ===== EXPORT PNG ===== */
+async function downloadPng() {
+  const node = document.getElementById('banner');
+  const shell = document.querySelector('.banner-shell');
+  const wrap  = document.querySelector('.banner-wrap');
+  const prev  = shell.style.cssText;
+  shell.style.cssText = 'width:1800px!important;height:2400px!important;transform:none!important';
+  wrap.style.width = '1800px'; wrap.style.height = '2400px'; wrap.style.overflow = 'visible';
+  document.body.style.overflow = 'visible';
+  await new Promise(r => setTimeout(r, 200));
+  try {
+    const canvas = await html2canvas(node, { width:1800, height:2400, windowWidth:1800, windowHeight:2400, backgroundColor:'#0c0c0c', scale:1, useCORS:true, logging:false, x:0, y:0 });
+    const a = document.createElement('a'); a.href = canvas.toDataURL('image/png'); a.download = 'size-chart-tshirt.png'; a.click();
+  } catch(e) { alert('Ошибка: ' + e.message); }
+  finally { document.body.style.overflow = ''; shell.style.cssText = prev; scaleBanner(); }
+}
+
+/* ===== EXPORT HTML ===== */
+function downloadHtml() {
+  const blob = new Blob(['<!doctype html>\n' + document.documentElement.outerHTML], {type:'text/html;charset=utf-8'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'size-chart-tshirt.html'; a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+</script>
+</body>
+</html>
